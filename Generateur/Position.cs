@@ -22,8 +22,8 @@ namespace Generateur
         {
             string laPosition;//String a retourner
 
-            int L = 0;//longeur de l'image
-            int H = 0;//Hauteur de l'image
+            int L = 1920;//longeur de l'image
+            int H = 1080;//Hauteur de l'image
             int XM = L / 2;//X milieu
             int YM = H / 2; //Y milieu
             int degrerX = 0; //degrer en X
@@ -41,10 +41,11 @@ namespace Generateur
                     if (((Y - YM) % YM) != 0)
                     {
                         string[] Separateur;//Separe les degrer des minutes
-                        float restant = ((Y - YM) / YM);
+                        float restant = ((Y - YM) / (float)YM);
                         
-                        Separateur = restant.ToString().Split('.');
-                        restant = int.Parse(Separateur[1]) / 100;
+                        Separateur = restant.ToString().Split(',');
+                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        restant = restant / 100;
                         MinuteY = (int)(restant * 60);
                     }
                     else
@@ -57,10 +58,11 @@ namespace Generateur
                     if (((Y + YM) % YM) != 0)
                     {
                         string[] Separateur;//Separe les degrer des minutes
-                        float restant = ((Y + YM) / YM);
+                        float restant = (Y + YM) / (float)YM;
                        
-                        Separateur = restant.ToString().Split('.');
-                        restant = int.Parse(Separateur[1]) / 100;
+                        Separateur = restant.ToString().Split(',');
+                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        restant = restant / 100;
                         MinuteY = (int)(restant * 60);
                     }
                     else
@@ -76,10 +78,11 @@ namespace Generateur
                     if (((X - XM) % XM) != 0)
                     {
                         string[] Separateur;//Separe les degrer des minutes
-                        float restant = ((X - XM) / XM);
+                        float restant = ((X - XM) / (float)XM);
                   
-                        Separateur = restant.ToString().Split('.');
-                        restant = int.Parse(Separateur[1]) / 100;
+                        Separateur = restant.ToString().Split(',');
+                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        restant = restant / 100;
                         MinuteX = (int)(restant * 60);
                     }
                     else
@@ -92,9 +95,10 @@ namespace Generateur
                     if (((X + XM) % XM) != 0)
                     {
                         string[] Separateur;//Separe les degrer des minutes
-                        float restant = ((X + XM) / XM);
-                        Separateur = restant.ToString().Split('.');
-                        restant = int.Parse(Separateur[1]) / 100;
+                        float restant = ((X + XM) / (float)XM);
+                        Separateur = restant.ToString().Split(',');
+                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        restant = restant / 100;
                         MinuteX = (int)(restant * 60);
                     }
                     else

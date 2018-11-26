@@ -23,7 +23,7 @@ namespace Generateur
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-
+           
             Generateur generateur = new Generateur();
 		}
 
