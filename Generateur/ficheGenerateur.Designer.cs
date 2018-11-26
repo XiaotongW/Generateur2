@@ -131,6 +131,7 @@
             this.cmdSupprimerAeroport.TabIndex = 19;
             this.cmdSupprimerAeroport.Text = "Supprimer";
             this.cmdSupprimerAeroport.UseVisualStyleBackColor = true;
+            this.cmdSupprimerAeroport.Click += new System.EventHandler(this.cmdSupprimerAeroport_Click);
             // 
             // button2
             // 
@@ -269,6 +270,7 @@
             this.lstAeroport.Name = "lstAeroport";
             this.lstAeroport.Size = new System.Drawing.Size(120, 290);
             this.lstAeroport.TabIndex = 0;
+            this.lstAeroport.SelectedIndexChanged += new System.EventHandler(this.lstAeroport_SelectedIndexChanged);
             // 
             // ongAeronef
             // 
@@ -305,6 +307,7 @@
             this.button1.TabIndex = 25;
             this.button1.Text = "Supprimer";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // etqEntretienAeronef
             // 
@@ -470,12 +473,14 @@
             this.chargerUnScénarioToolStripMenuItem.Name = "chargerUnScénarioToolStripMenuItem";
             this.chargerUnScénarioToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.chargerUnScénarioToolStripMenuItem.Text = "Charger un scénario ...";
+            this.chargerUnScénarioToolStripMenuItem.Click += new System.EventHandler(this.chargerUnScénarioToolStripMenuItem_Click);
             // 
             // sauvegarderUnScénarioToolStripMenuItem
             // 
             this.sauvegarderUnScénarioToolStripMenuItem.Name = "sauvegarderUnScénarioToolStripMenuItem";
             this.sauvegarderUnScénarioToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.sauvegarderUnScénarioToolStripMenuItem.Text = "Sauvegarder un scénario ...";
+            this.sauvegarderUnScénarioToolStripMenuItem.Click += new System.EventHandler(this.sauvegarderUnScénarioToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
@@ -497,6 +502,7 @@
             this.réinitialiserLeScénarioToolStripMenuItem.Name = "réinitialiserLeScénarioToolStripMenuItem";
             this.réinitialiserLeScénarioToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.réinitialiserLeScénarioToolStripMenuItem.Text = "Réinitialiser le scénario";
+            this.réinitialiserLeScénarioToolStripMenuItem.Click += new System.EventHandler(this.réinitialiserLeScénarioToolStripMenuItem_Click);
             // 
             // ficheGenerateur
             // 

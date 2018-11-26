@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,40 @@ namespace Generateur
         //Ajouter les types d'aéronefs dans la liste déroulante
         {
             cmbTypeAeronef.DataSource = Enum.GetValues(typeof(typeAvion));
+        }
+
+        private void chargerScenario()
+        {
+            OpenFileDialog ouvrirFichier;
+            ouvrirFichier = new OpenFileDialog();
+
+            using (ouvrirFichier)
+            {
+                ouvrirFichier.InitialDirectory = Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+                ouvrirFichier.Filter = "Fichiers de scénario (*.scenario)|*.scenario";
+
+                if (ouvrirFichier.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private void sauvegarderScenario()
+        {
+            SaveFileDialog sauvegarderFichier;
+            sauvegarderFichier = new SaveFileDialog();
+
+            using (sauvegarderFichier)
+            {
+                sauvegarderFichier.InitialDirectory = Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
+                sauvegarderFichier.Filter = "Fichiers de scénario (*.scenario)|*.scenario";
+
+                if (sauvegarderFichier.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
         }
 
         private void ajouterAeroport()
@@ -198,6 +233,38 @@ namespace Generateur
         private void button2_Click(object sender, EventArgs e)
         {
             tabCreation.SelectedIndex = 1;
+        }
+
+        private void cmdSupprimerAeroport_Click(object sender, EventArgs e)
+        {
+            m_generateur.supprimerAeroport(lstAeroport.SelectedIndex);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            m_generateur.supprimerAeronef(lstAeronef.SelectedIndex);
+        }
+
+        private void réinitialiserLeScénarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void chargerUnScénarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chargerScenario();
+        }
+
+        private void sauvegarderUnScénarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sauvegarderScenario();
+        }
+
+        private void lstAeroport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int aeroportChoisi;
+
+            aeroportChoisi = lstAeronef.SelectedIndex;
         }
     }
 }
