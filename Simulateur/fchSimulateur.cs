@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Simulateur
 {
-	public partial class Form1 : Form
+	public partial class fchSimulateur : Form
 	{
-		public Form1()
+		public fchSimulateur()
 		{
 			InitializeComponent();
 		}

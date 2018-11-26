@@ -1,6 +1,6 @@
 ﻿namespace Simulateur
 {
-	partial class Form1
+	partial class fchSimulateur
 	{
 		/// <summary>
 		/// Variable nécessaire au concepteur.
