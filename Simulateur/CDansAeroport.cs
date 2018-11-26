@@ -8,6 +8,8 @@ namespace Simulateur
 {
 	abstract class CDansAeroport:CClients
 	{
+		protected int nombreClient;
+		private Destination;
 		public CDansAeroport()
 		{
 
