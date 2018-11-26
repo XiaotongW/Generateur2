@@ -8,9 +8,16 @@ namespace Simulateur
 {
 	class CVoyageur:CDansAeroport
 	{
-		public CVoyageur()
+		protected int nombreClient;
+		public CVoyageur(CAeroport aeroport, int nombreClient):base(aeroport)
 		{
+			this.nombreClient = nombreClient;
+		}
 
+		public int clients
+		{
+			get { return nombreClient; }
+			set { nombreClient = value; }
 		}
 	}
 }

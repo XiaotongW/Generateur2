@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulateur
 {
-    class Position
+    public class Position
     {
         int X;
         int Y;
@@ -130,6 +130,15 @@ namespace Simulateur
             }
             else { Xcardinalite = '0'; }
         }
+
+		public int x
+		{
+			get { return X; }
+		}
+		public int y
+		{
+			get { return Y; }
+		}
 
     }
 }

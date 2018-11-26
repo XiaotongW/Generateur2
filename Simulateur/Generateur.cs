@@ -8,12 +8,12 @@ namespace Simulateur
 {
 	public class Generateur
 	{
-        private ficheGenerateur m_fiche;
+        private fchSimulateur m_fiche;
         //private Scenario m_scenario;
 
         public Generateur()
         {
-            m_fiche = new ficheGenerateur(this);
+            m_fiche = new fchSimulateur();
 
             Application.Run(m_fiche);
         }

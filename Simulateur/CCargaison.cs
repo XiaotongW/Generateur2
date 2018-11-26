@@ -8,9 +8,20 @@ namespace Simulateur
 {
 	class CCargaison:CDansAeroport
 	{
+		protected double m_poid;
 		public CCargaison()
 		{
 
+		}
+		public CCargaison (CAeroport aeroport, double poid):base(aeroport)
+		{
+			m_poid = poid;
+		}
+
+		public double poid
+		{
+			get { return m_poid; }
+			set { m_poid = value; }
 		}
 	}
 }

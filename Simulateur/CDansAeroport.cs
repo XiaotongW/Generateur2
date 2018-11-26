@@ -8,11 +8,21 @@ namespace Simulateur
 {
 	abstract class CDansAeroport:CClients
 	{
-		protected int nombreClient;
-		private Destination;
+		private CAeroport Destination;
+
 		public CDansAeroport()
 		{
 
+		}
+
+		public CDansAeroport(CAeroport Destination)
+		{
+			this.Destination = Destination;
+		}
+
+		public Position destination
+		{
+			get { return Destination.position; }
 		}
 	}
 }

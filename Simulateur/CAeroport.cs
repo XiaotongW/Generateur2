@@ -14,19 +14,21 @@ namespace Simulateur
 			MaxPassager;
 		int MinCargo,
 			MaxCargo;
+		Position m_position;
 		List<CAeronef> Aeronefs;
 
 		public CAeroport() {
 			Aeronefs = new List<CAeronef>();
 		}
 
-		public CAeroport(string Nom, int MinPassager, int MaxPassager, int MinCargo,int MaxCargo)
+		public CAeroport(string Nom, int MinPassager, int MaxPassager, int MinCargo,int MaxCargo, int posX, int posY)
 		{
 			this.Nom = Nom;
 			this.MinPassager = MinPassager;
 			this.MaxPassager = MaxPassager;
 			this.MinCargo = MinCargo;
 			this.MaxCargo = MaxCargo;
+			m_position = new Position(posX, posY); 
 			Aeronefs = new List<CAeronef>();
 		}
 		public string nom
@@ -59,6 +61,11 @@ namespace Simulateur
 			get { return Aeronefs.ElementAt(i); }
 			set { Aeronefs[i] = value; }
 		}
+
+		public Position position {
+			get { return m_position; }
+			set { m_position = value; }
+		}
 		public int AjouterAeronef(CAeronef Aeronef)
 		{
 			Aeronefs.Add(Aeronef);
@@ -71,7 +78,7 @@ namespace Simulateur
 
 		public override string ToString()
 		{
-			return string.Format("{0} ({1} N, {2} O), Min Passager : {3}, Max Passager : {4}, Min Marchandise : {5}, Max Marchandise : {6}", new object[] {nom, 0,0,this.MinPassager,this.MaxPassager,this.MinCargo,this.MaxCargo }); 
+			return string.Format("{0} ({1}), Min Passager : {2}, Max Passager : {3}, Min Marchandise : {4}, Max Marchandise : {5}", new object[] {nom, position.ConvertirPosition(),this.MinPassager,this.MaxPassager,this.MinCargo,this.MaxCargo }); 
 		}
 	}
 }
