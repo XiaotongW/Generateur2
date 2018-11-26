@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Generateur
+namespace Simulateur
 {
 	public class CAeroport
 	{
@@ -14,9 +14,8 @@ namespace Generateur
 			MaxPassager;
 		int MinCargo,
 			MaxCargo;
-		Position position;
+		Position m_position;
 		List<CAeronef> Aeronefs;
-		CUsineAeronef UsineAeronef;
 
 		public CAeroport() {
 			Aeronefs = new List<CAeronef>();
@@ -29,8 +28,7 @@ namespace Generateur
 			this.MaxPassager = MaxPassager;
 			this.MinCargo = MinCargo;
 			this.MaxCargo = MaxCargo;
-			position = new Position(posX, posY);
-			UsineAeronef = new CUsineAeronef();
+			m_position = new Position(posX, posY); 
 			Aeronefs = new List<CAeronef>();
 		}
 		public string nom
@@ -64,16 +62,10 @@ namespace Generateur
 			set { Aeronefs[i] = value; }
 		}
 
-		public void CreeAeronef(typeAvion Type, string Nom, int Vitesse, int Entretient, int Capacite)
-		{
-			AjouterAeronef(UsineAeronef.CreerAeronef(Type, Nom, Vitesse, Entretient, Capacite));
+		public Position position {
+			get { return m_position; }
+			set { m_position = value; }
 		}
-
-		public void CreeAeronef(typeAvion Type, string Nom, int Vitesse, int Entretient, int Capacite, int Embarquement, int Debarquement, int Data)
-		{
-			AjouterAeronef(UsineAeronef.CreerAeronef(Type, Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement,Data));
-		}
-
 		public int AjouterAeronef(CAeronef Aeronef)
 		{
 			Aeronefs.Add(Aeronef);
