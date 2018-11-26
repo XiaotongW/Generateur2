@@ -20,44 +20,91 @@ namespace Generateur
 
         public string ConvertirPosition() //converti la coordonnée cartésienne en coordonée gps
         {
-            string laPosition="";
-            
+            string laPosition;//String a retourner
+
             int L = 0;//longeur de l'image
             int H = 0;//Hauteur de l'image
             int XM = L / 2;//X milieu
             int YM = H / 2; //Y milieu
-            int degrerX; //degrer en X
-            int degrerY; //degrer en Y
-            int MinuteX; //Minute en X
-            int MinuteY; // minute en Y
+            int degrerX = 0; //degrer en X
+            int degrerY = 0; //degrer en Y
+            int MinuteX = 0; //Minute en X
+            int MinuteY = 0; // minute en Y
+            
 
-            TrouverCardinalite(XM,YM);
-            //manque le reste pour calculer minute sur 60
+            TrouverCardinalite(XM, YM);
+
             switch (Ycardinalite)
             {
                 case 'N':
                     degrerY = ((Y - YM) / YM) * 90;
                     if (((Y - YM) % YM) != 0)
                     {
-                        float restant = ((Y - YM) % YM);
-                        MinuteX = (int)restant * 60;
+                        string[] Separateur;//Separe les degrer des minutes
+                        float restant = ((Y - YM) / YM);
+                        
+                        Separateur = restant.ToString().Split('.');
+                        restant = int.Parse(Separateur[1]) / 100;
+                        MinuteY = (int)(restant * 60);
+                    }
+                    else
+                    {
+                        MinuteY = 0;
                     }
                     break;
                 case 'S':
                     degrerY = ((Y + YM) / YM) * 90;
+                    if (((Y + YM) % YM) != 0)
+                    {
+                        string[] Separateur;//Separe les degrer des minutes
+                        float restant = ((Y + YM) / YM);
+                       
+                        Separateur = restant.ToString().Split('.');
+                        restant = int.Parse(Separateur[1]) / 100;
+                        MinuteY = (int)(restant * 60);
+                    }
+                    else
+                    {
+                        MinuteY = 0;
+                    }
                     break;
             }
             switch (Xcardinalite)
             {
                 case 'E':
                     degrerX = ((X - XM) / XM) * 180;
+                    if (((X - XM) % XM) != 0)
+                    {
+                        string[] Separateur;//Separe les degrer des minutes
+                        float restant = ((X - XM) / XM);
+                  
+                        Separateur = restant.ToString().Split('.');
+                        restant = int.Parse(Separateur[1]) / 100;
+                        MinuteX = (int)(restant * 60);
+                    }
+                    else
+                    {
+                        MinuteX = 0;
+                    }
                     break;
                 case 'O':
                     degrerX = ((X + XM) / XM) * 180;
+                    if (((X + XM) % XM) != 0)
+                    {
+                        string[] Separateur;//Separe les degrer des minutes
+                        float restant = ((X + XM) / XM);
+                        Separateur = restant.ToString().Split('.');
+                        restant = int.Parse(Separateur[1]) / 100;
+                        MinuteX = (int)(restant * 60);
+                    }
+                    else
+                    {
+                        MinuteX = 0;
+                    }
                     break;
             }
-             
 
+            laPosition = degrerY.ToString() + "° " + MinuteY + "' " + Ycardinalite + ", " + degrerX.ToString() + "° " + MinuteX + "' " + Xcardinalite;
             return laPosition;
         }
 
@@ -83,6 +130,6 @@ namespace Generateur
             }
             else { Xcardinalite = '0'; }
         }
-        
+
     }
 }
