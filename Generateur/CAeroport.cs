@@ -14,19 +14,23 @@ namespace Generateur
 			MaxPassager;
 		int MinCargo,
 			MaxCargo;
+		Position position;
 		List<CAeronef> Aeronefs;
+		CUsineAeronef UsineAeronef;
 
 		public CAeroport() {
 			Aeronefs = new List<CAeronef>();
 		}
 
-		public CAeroport(string Nom, int MinPassager, int MaxPassager, int MinCargo,int MaxCargo)
+		public CAeroport(string Nom, int MinPassager, int MaxPassager, int MinCargo,int MaxCargo, int posX, int posY)
 		{
 			this.Nom = Nom;
 			this.MinPassager = MinPassager;
 			this.MaxPassager = MaxPassager;
 			this.MinCargo = MinCargo;
 			this.MaxCargo = MaxCargo;
+			position = new Position(posX, posY);
+			UsineAeronef = new CUsineAeronef();
 			Aeronefs = new List<CAeronef>();
 		}
 		public string nom
@@ -59,6 +63,17 @@ namespace Generateur
 			get { return Aeronefs.ElementAt(i); }
 			set { Aeronefs[i] = value; }
 		}
+
+		public void CreeAeronef(typeAvion Type, string Nom, int Vitesse, int Entretient, int Capacite)
+		{
+			AjouterAeronef(UsineAeronef.CreerAeronef(Type, Nom, Vitesse, Entretient, Capacite));
+		}
+
+		public void CreeAeronef(typeAvion Type, string Nom, int Vitesse, int Entretient, int Capacite, int Embarquement, int Debarquement, int Data)
+		{
+			AjouterAeronef(UsineAeronef.CreerAeronef(Type, Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement,Data));
+		}
+
 		public int AjouterAeronef(CAeronef Aeronef)
 		{
 			Aeronefs.Add(Aeronef);
@@ -71,7 +86,7 @@ namespace Generateur
 
 		public override string ToString()
 		{
-			return string.Format("{0} ({1} N, {2} O), Min Passager : {3}, Max Passager : {4}, Min Marchandise : {5}, Max Marchandise : {6}", new object[] {nom, 0,0,this.MinPassager,this.MaxPassager,this.MinCargo,this.MaxCargo }); 
+			return string.Format("{0} ({1}), Min Passager : {2}, Max Passager : {3}, Min Marchandise : {4}, Max Marchandise : {5}", new object[] {nom, position.ConvertirPosition(),this.MinPassager,this.MaxPassager,this.MinCargo,this.MaxCargo }); 
 		}
 	}
 }
