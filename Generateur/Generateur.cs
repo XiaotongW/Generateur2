@@ -9,7 +9,7 @@ namespace Generateur
 	public class Generateur
 	{
         private ficheGenerateur m_fiche;
-        //private Scenario m_scenario;
+        private Scenario m_scenario;
 
         public Generateur()
         {
@@ -42,9 +42,19 @@ namespace Generateur
             //m_scenario.ajouterAeroport(nom, ville, posX, posY, minPass, maxPass, minCargo, maxCargo);
         }
 		
-        public void ajouterAeronef(string modele, int capacite, string type, int vitesse, int embarquement, int debarquement, int maintenance)
+        public void ajouterAeronef(string modele, int capacite, typeAvion type, int vitesse, int embarquement, int debarquement, int maintenance)
         {
             //m_scenario.ajouterAeronef(modele, capacite, type, vitesse, embarquement, debarquement, maintenance);
+        }
+
+        public void supprimerAeroport(int index)
+        {
+
+        }
+
+        public void supprimerAeronef(int index)
+        {
+
         }
     }
 }

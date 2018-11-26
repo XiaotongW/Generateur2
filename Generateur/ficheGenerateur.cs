@@ -31,6 +31,12 @@ namespace Generateur
 
         }
 
+        private void afficherTypeAeronef()
+        //Ajouter les types d'aéronefs dans la liste déroulante
+        {
+            cmbTypeAeronef.DataSource = Enum.GetValues(typeof(typeAvion));
+        }
+
         private void ajouterAeroport()
         //Ajouter un aéroport dans le scenario
         {
@@ -98,7 +104,7 @@ namespace Generateur
         {
             string modeleAeronef;
             int capaciteAeronef;
-            string typeAeronef;
+            typeAvion typeAeronef;
             int vitesseAeronef;
             int embarquementAeronef;
             int debarquementAeronef;
@@ -124,22 +130,14 @@ namespace Generateur
                 capaciteAeronef = -1;
             }
 
-            if (cmbTypeAeronef.Text != "")
-            {
-                typeAeronef = cmbTypeAeronef.Text;
-            }
-            else
-            {
-                MessageBox.Show("Choisir un type pour l'aéronef");
-                typeAeronef = "";
-            }
+            typeAeronef = (typeAvion)cmbTypeAeronef.SelectedIndex;
 
             vitesseAeronef = selVitesseAeronef.Value;
             embarquementAeronef = selEmbarquementAeronef.Value;
             debarquementAeronef = selDebarquementAeronef.Value;
             maintenanceAeronef = selEntretienAeronef.Value;
 
-            if (modeleAeronef != "" && typeAeronef != "" && capaciteAeronef != -1)
+            if (modeleAeronef != "" && capaciteAeronef != -1)
             {
                 //m_generateur.ajouterAeronef(modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, embarquementAeronef, debarquementAeronef, maintenanceAeronef);
             }
@@ -190,6 +188,16 @@ namespace Generateur
         private void cmdAjouterAeronef_Click(object sender, EventArgs e)
         {
             ajouterAeronef();
+        }
+
+        private void ficheGenerateur_Load(object sender, EventArgs e)
+        {
+            afficherTypeAeronef();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tabCreation.SelectedIndex = 1;
         }
     }
 }

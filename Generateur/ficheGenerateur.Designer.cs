@@ -140,6 +140,7 @@
             this.button2.TabIndex = 18;
             this.button2.Text = "Aéronefs de l\'aéroport";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cmdAjouterAeroport
             // 
@@ -385,6 +386,7 @@
             // 
             // cmbTypeAeronef
             // 
+            this.cmbTypeAeronef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypeAeronef.FormattingEnabled = true;
             this.cmbTypeAeronef.Location = new System.Drawing.Point(182, 58);
             this.cmbTypeAeronef.Name = "cmbTypeAeronef";
@@ -505,6 +507,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "ficheGenerateur";
             this.Text = "ficheGenerateur";
+            this.Load += new System.EventHandler(this.ficheGenerateur_Load);
             this.tabCreation.ResumeLayout(false);
             this.ongAeroport.ResumeLayout(false);
             this.ongAeroport.PerformLayout();

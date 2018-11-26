@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Generateur
 {
-    class Scenario
+    public class Scenario
     {
+        List<CAeronef> aeroports;
+
+        public Scenario()
+        {
+
+        }
+
+
     }
 }
