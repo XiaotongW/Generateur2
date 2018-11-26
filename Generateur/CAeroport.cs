@@ -74,7 +74,7 @@ namespace Generateur
 			AjouterAeronef(UsineAeronef.CreerAeronef(Type, Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement,Data));
 		}
 
-		public int AjouterAeronef(CAeronef Aeronef)
+		protected int AjouterAeronef(CAeronef Aeronef)
 		{
 			Aeronefs.Add(Aeronef);
 			return Aeronefs.Count();
