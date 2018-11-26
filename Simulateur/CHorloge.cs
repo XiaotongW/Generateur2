@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Simulateur
 {
 	class CHorloge
@@ -14,7 +15,7 @@ namespace Simulateur
 		int[] TimeBuff;
 		int TimeSpeed;
 
-		public CHorloge()
+		public CHorloge(int speed=1)
 		{
 			Debut = DateTime.Now;
 			DateNow = Debut;
@@ -23,7 +24,7 @@ namespace Simulateur
 			{
 				TimeBuff[i] = 0;
 			}
-			TimeSpeed = 1;
+			TimeSpeed = speed;
 			enPause = false;
 		}
 
@@ -50,7 +51,7 @@ namespace Simulateur
 		public bool isDiff()
 		{
 			if (!enPause) DateNow = DateTime.Now;
-			return enPause && ((Debut.Second != DateNow.Second) || (Debut.Minute != DateNow.Minute) || (Debut.Hour != DateNow.Second));
+			return !enPause && ((Debut.Second != DateNow.Second) || (Debut.Minute != DateNow.Minute) || (Debut.Hour != DateNow.Second));
 		}
 
 		public override string ToString()
@@ -64,21 +65,24 @@ namespace Simulateur
 			int buffMinutes = 0;
 			int buffHeure = 0;
 			if (!isDiff()) return;
-			TimeBuff[2] += DateNow.Second - Debut.Second;
+			TimeBuff[2] += Math.Abs(DateNow.Second - Debut.Second)*TimeSpeed;
 			if (TimeBuff[2] > 59){
 				buffMinutes = (int)(TimeBuff[0]/60);
 				TimeBuff[2] = TimeBuff[2]%60;
 				
 			}
 
-			TimeBuff[1] += (DateNow.Minute - Debut.Minute)+buffMinutes;
+			TimeBuff[1] += (Math.Abs(DateNow.Minute - Debut.Minute)+buffMinutes);
 			if (TimeBuff[1] > 59)
 			{
 				buffHeure = (int)(TimeBuff[1] / 60);
 				TimeBuff[1]= TimeBuff[1]%60;
 			}
-			TimeBuff[0] += DateNow.Hour - Debut.Hour + buffHeure;
-			
+			TimeBuff[0] += (Math.Abs(DateNow.Hour - Debut.Hour) + buffHeure);
+			if (TimeBuff[0] > 23)
+			{
+				TimeBuff[0] = 0;
+			}
 			
 			Debut = DateNow;
 		}
