@@ -9,7 +9,7 @@ namespace Simulateur
 	class CVoyageur:CDansAeroport
 	{
 		protected int nombreClient;
-		public CVoyageur(CAeroport aeroport, int nombreClient):base(aeroport)
+		public CVoyageur(typeClient client, CAeroport aeroport, int nombreClient):base(client, aeroport)
 		{
 			this.nombreClient = nombreClient;
 		}

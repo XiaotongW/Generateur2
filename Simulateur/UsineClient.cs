@@ -13,26 +13,28 @@ namespace Simulateur
 
 		}
 
-		public CClients ajouterClient(CAeroport aeroport, int nombreClient)
-		{
-			return new CVoyageur(aeroport,nombreClient);
+		// DansAeroport
+		public CClients creeClient(CAeroport aeroport, int nombreClient)
+		{// Aeronef Voyageur
+			return new CVoyageur(typeClient.Voyageur, aeroport, nombreClient);
 		}
-		public CClients ajouterClient(CAeroport aeroport, double poid)
-		{
-			return new CCargaison(aeroport, poid);
-		} 
+		public CClients creeClient(CAeroport aeroport, double poid)
+		{// Aeronef cargaison
+			return new CCargaison(typeClient.Cargaison,aeroport, poid);
+		}
 
-		public CClients ajouterClient(int x,int y, int intensite)
-		{
-			return new CIncendie(x, y, intensite);
+		// SurCarte
+		public CClients creeClient(typeClient client, Position mapPosition, int clValue)
+		{// Aeronef Incendie
+			if (client == typeClient.Incendie)
+				return new CIncendie(client,mapPosition, clValue); // ClValue = Intensite
+			else if (client == typeClient.Point)
+				return new CPoint(client,mapPosition, clValue); // clValue = rayon
+			return null;
 		}
-		public CClients ajouterClient(int x, int y)
-		{
-			return new CDetresse(x, y);
-		}
-		public CClients ajouterClient (Position position, int rayon)
-		{
-			return new CPoint(position, rayon);
+		public CClients creeClient(Position mapPosition)
+		{// Aeronef Detresse
+			return new CDetresse(typeClient.Detresse,mapPosition);
 		}
 	}
 }

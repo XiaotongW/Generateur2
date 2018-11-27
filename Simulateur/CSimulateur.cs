@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Simulateur
 {
@@ -13,27 +15,44 @@ namespace Simulateur
 	{
 		CHorloge Timer;
 		fchSimulateur VSimulateur;
+		Scenario m_scenario;
 		TimeDelegue UpdateTime;
 		Thread formRun;
 		public CSimulateur()
 		{
-			VSimulateur = new fchSimulateur(this);
 			UpdateTime = new TimeDelegue(UpdateHorloge);
-			Timer = new CHorloge(UpdateTime,1000);
+			Timer = new CHorloge(1000,UpdateTime,1);
+			VSimulateur = new fchSimulateur(this);
 			formRun = new Thread(new ThreadStart(() => Application.Run(VSimulateur)));
 			formRun.Start();
-			Timer.DebutHorloge();
+			Timer.Start();
 		}
 
-		public void UpdateHorloge(string timeString)
+		public Scenario scenario
 		{
+			get { return m_scenario; }
+			set { m_scenario = value; }
+		}
+
+		private void chargerScenario(string LeScenario)
+		{
+			XmlSerializer xs = new XmlSerializer(typeof(Scenario));
+			using (StreamReader sr = new StreamReader(LeScenario))
+			{
+				scenario = xs.Deserialize(sr) as Scenario;
+			}
+		}
+
+		private void UpdateHorloge(string timeString)
+		{
+			// Méthode delegue pour Update l'horloge de la fchSimulateur
 			try
 			{
-				VSimulateur.Invoke(VSimulateur.timeDelegue,new object[] {timeString});
+				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {timeString});
 			}
-			catch (Exception)
+			catch
 			{
-				formRun.Abort();
+				formRun = null;
 				Application.Exit();
 			}
 		}

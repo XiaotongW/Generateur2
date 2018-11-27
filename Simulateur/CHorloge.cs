@@ -10,93 +10,92 @@ namespace Simulateur
 	class CHorloge
 	{
 		Timer m_Timer;
-		bool enPause;
-		int TimeSpeed;
+		int m_TimeSpeed, m_Step;
 		int Heures, Minutes, Secondes;
 		TimeDelegue UpdateDelegue;
 
-		public CHorloge(TimeDelegue monDelegue,int speed=1)
+		public CHorloge(int speed, TimeDelegue timeDelegue, int Step)
 		{
-			m_Timer = new Timer((int)(1000 / speed));
-			m_Timer.Elapsed += OnTimedEvent;
-			m_Timer.AutoReset = false;
-			TimeSpeed = speed;
-			enPause = false;
-			Heures = 0;
-			Minutes = 0;
-			Secondes = 0;
-			UpdateDelegue = monDelegue;
+			m_TimeSpeed = speed;
+			m_Step = Step;
+			UpdateDelegue = timeDelegue;
+			ResetTimer();
 		}
 
-		public string DebutHorloge()
+		public CHorloge(TimeDelegue timeDelegue) : this (1, timeDelegue, 1)
 		{
-			restart();
-			return ToString();
+
 		}
 
-		public void setPause()
+		public CHorloge(int speed,TimeDelegue timeDelegue) :this(speed,timeDelegue,1)
 		{
-			enPause = true;
-			m_Timer.AutoReset = false;
-			m_Timer.Stop();
+
 		}
 
-		public void restart()
+		public CHorloge(TimeDelegue timeDelegue, int Step):this(1,timeDelegue,Step)
 		{
-			enPause = false;
-			m_Timer.AutoReset = true;
-			m_Timer.Start();
-		}
 
-		public void resetTimer()
-		{
-			m_Timer = new Timer((int)(1000 / TimeSpeed));
-			m_Timer.Elapsed += OnTimedEvent;
-			Heures = 0;
-			Minutes = 0;
-			Secondes = 0;
-			restart();
 		}
 
 		public int speed
 		{
-			get { return TimeSpeed; }
+			get { return m_TimeSpeed; }
 			set {
-				TimeSpeed = (value <= 1000 && value >= 1) ? value:TimeSpeed;
-				m_Timer.Interval = (int)(1000 / TimeSpeed);
+				m_TimeSpeed = (value <= 1000 && value >= 1) ? value:m_TimeSpeed;
+				m_Timer.Interval = 1000 / m_TimeSpeed;
 			}
 		}
 
-		public int secondesEcouler()
+		public int Step
+		{
+			get { return m_Step; }
+			set { m_Step = (value >= 1 && value <= int.MaxValue) ? value : m_Step; }
+		}
+
+		public void Start()
+		{
+			m_Timer.Start();
+		}
+
+		public void Pause()
+		{
+			m_Timer.Stop();
+		}
+
+		public Timer ResetTimer()
+		{
+			m_Timer = new Timer(1000 / m_TimeSpeed);
+			m_Timer.Elapsed += OnTimedEvent;
+			Heures = 0;
+			Minutes = 0;
+			Secondes = 0;
+			return m_Timer;
+		}
+
+		public int SecondesEcouler()
 		{
 			return Heures * 60 * 60 + Minutes * 60 + Secondes;
 		}
 
 		public override string ToString()
 		{
-			string heuresStr = (Heures <= 9) ? "0" + Heures.ToString() : Heures.ToString();
-			string MinutesStr = (Minutes <= 9) ? "0" + Minutes.ToString() : Minutes.ToString();
-			string SecondesStr = (Secondes <= 9) ? "0" + Secondes.ToString() : Secondes.ToString();
-			return string.Format("{0} : {1} : {2}",heuresStr,MinutesStr,SecondesStr);
+			return string.Format("{0} : {1} : {2}",
+				(Heures <= 9) ? "0" + Heures.ToString() : Heures.ToString(),
+				(Minutes <= 9) ? "0" + Minutes.ToString() : Minutes.ToString(),
+				(Secondes <= 9) ? "0" + Secondes.ToString() : Secondes.ToString()
+				);
 		}
 
 		private void OnTimedEvent(Object source, ElapsedEventArgs e)
 		{
-			if (!enPause) Secondes += 1;
+			if (m_Timer.Enabled) Secondes += m_Step;
 			if (Secondes > 59)
 			{
-				do
-				{
-					Minutes += 1;
-					while (Minutes >= 60)
-					{
-						Heures = (Heures+1 == 24) ? 0 : Heures+1;
-						Minutes -= 60;
-					}
-					Secondes -= 60;
-				} while (Secondes >= 60);
+				Minutes += (Secondes - Secondes % 60) / 60;
+				Secondes = Secondes % 60;
+				Heures += (Minutes - Minutes % 60) / 60;
+				Minutes = Minutes % 60;
 			}
-
 			UpdateDelegue(ToString());
 		}
 	}
