@@ -53,9 +53,14 @@ namespace Generateur
             m_scenario.AjouterAeroport(nom, ville, posX, posY, minPass, maxPass, minCargo, maxCargo);
         }
 		
-        public void ajouterAeronef(string modele, int capacite, typeAvion type, int vitesse, int embarquement, int debarquement, int maintenance)
+        public void ajouterAeronef(int codeAeroport, string modele, int capacite, typeAvion type, int vitesse, int embarquement, int debarquement, int maintenance)
         {
-            //m_scenario.ajouterAeronef(modele, capacite, type, vitesse, embarquement, debarquement, maintenance);
+            m_scenario[codeAeroport].CreeAeronef(type, modele, vitesse, maintenance, capacite, embarquement, debarquement, 0);
+        }
+
+        public void ajouterAeronef(int codeAeroport, string modele, int capacite, typeAvion type, int vitesse, int maintenance)
+        {
+            m_scenario[codeAeroport].CreeAeronef(type, modele, vitesse, maintenance, capacite);
         }
 
         public void supprimerAeroport(int index)

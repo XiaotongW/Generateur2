@@ -27,7 +27,7 @@ namespace Generateur
 
             codeAeroport = lstAeroport.SelectedIndex;
 
-            lstAeroport.Items.Clear();
+            lstAeronef.Items.Clear();
 
             nbAeronef = m_generateur.recevoirAeroport(codeAeroport).nbAeronefs;
 
@@ -172,10 +172,11 @@ namespace Generateur
             int embarquementAeronef;
             int debarquementAeronef;
             int maintenanceAeronef;
+            int codeAeroport;
 
             if (txtModeleAeronef.Text != "")
             {
-                modeleAeronef = txtNomAeroport.Text;
+                modeleAeronef = txtModeleAeronef.Text;
             }
             else
             {
@@ -200,9 +201,20 @@ namespace Generateur
             debarquementAeronef = selDebarquementAeronef.Value;
             maintenanceAeronef = selEntretienAeronef.Value;
 
+            codeAeroport = lstAeroport.SelectedIndex;
+
             if (modeleAeronef != "" && capaciteAeronef != -1)
             {
-                //m_generateur.ajouterAeronef(modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, embarquementAeronef, debarquementAeronef, maintenanceAeronef);
+                if (cmbTypeAeronef.SelectedIndex == 0 || cmbTypeAeronef.SelectedIndex == 1)
+                {
+                    m_generateur.ajouterAeronef(codeAeroport, modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, embarquementAeronef, debarquementAeronef, maintenanceAeronef);
+                }
+                else
+                {
+                    m_generateur.ajouterAeronef(codeAeroport, modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, maintenanceAeronef);
+                }
+
+                afficherListeAeronef();
             }
         }
 
