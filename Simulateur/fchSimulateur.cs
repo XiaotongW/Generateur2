@@ -22,8 +22,9 @@ namespace Simulateur
 			InitializeComponent();
 		}
 
-		public void setHorloge(string Time)
+		private void setHorloge(string Time)
 		{
+			// Methode delegue pour mettre a jour l'affichage du temps
 			lblHorloge.Text = Time;
 		}
     }

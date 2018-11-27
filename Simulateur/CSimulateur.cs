@@ -19,21 +19,22 @@ namespace Simulateur
 		{
 			VSimulateur = new fchSimulateur(this);
 			UpdateTime = new TimeDelegue(UpdateHorloge);
-			Timer = new CHorloge(UpdateTime,1000);
+			Timer = new CHorloge(1000,UpdateTime,2);
 			formRun = new Thread(new ThreadStart(() => Application.Run(VSimulateur)));
 			formRun.Start();
-			Timer.DebutHorloge();
+			Timer.Start();
 		}
 
 		public void UpdateHorloge(string timeString)
 		{
+			// Méthode delegue pour Update l'horloge de la fchSimulateur
 			try
 			{
-				VSimulateur.Invoke(VSimulateur.timeDelegue,new object[] {timeString});
+				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {timeString});
 			}
-			catch (Exception)
+			catch
 			{
-				formRun.Abort();
+				formRun = null;
 				Application.Exit();
 			}
 		}
