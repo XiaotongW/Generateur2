@@ -21,7 +21,7 @@ namespace Simulateur
 		public CSimulateur()
 		{
 			UpdateTime = new TimeDelegue(UpdateHorloge);
-			Timer = new CHorloge(1000,UpdateTime,2);
+			Timer = new CHorloge(1000,UpdateTime,1);
 			VSimulateur = new fchSimulateur(this);
 			formRun = new Thread(new ThreadStart(() => Application.Run(VSimulateur)));
 			formRun.Start();
@@ -43,7 +43,7 @@ namespace Simulateur
 			}
 		}
 
-		public void UpdateHorloge(string timeString)
+		private void UpdateHorloge(string timeString)
 		{
 			// Méthode delegue pour Update l'horloge de la fchSimulateur
 			try
