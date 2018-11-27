@@ -46,8 +46,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 553);
+            this.ClientSize = new System.Drawing.Size(1024, 556);
             this.Controls.Add(this.picCarteMonde);
+            this.MaximumSize = new System.Drawing.Size(1040, 595);
+            this.MinimumSize = new System.Drawing.Size(1040, 595);
             this.Name = "ficheCarte";
             this.Text = "ficheCarte";
             ((System.ComponentModel.ISupportInitialize)(this.picCarteMonde)).EndInit();
