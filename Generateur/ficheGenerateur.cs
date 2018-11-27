@@ -15,6 +15,8 @@ namespace Generateur
     {
         private Generateur m_generateur;
         private ficheCarte m_carte;
+        private int PosX;
+        private int PosY;
 
         public ficheGenerateur(Generateur generateur)
         {
@@ -202,7 +204,16 @@ namespace Generateur
         {
             m_carte = new ficheCarte();
 
-            m_carte.ShowDialog();
+            if (m_carte.ShowDialog() == DialogResult.OK)
+            {
+                PosX = m_carte.PositionX;
+                PosY = m_carte.PositionY;
+
+                //Debug
+                txtNomAeroport.Text = Convert.ToString(PosX);
+                txtVilleAeroport.Text = Convert.ToString(PosY);
+            }
+
         }
 
         private void cmdAjouterAeroport_Click(object sender, EventArgs e)

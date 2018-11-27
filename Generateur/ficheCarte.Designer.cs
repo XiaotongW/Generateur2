@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.picCarteMonde = new System.Windows.Forms.PictureBox();
+            this.cmdOK = new System.Windows.Forms.Button();
+            this.cmdAnnuler = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCarteMonde)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,14 +46,36 @@
             this.picCarteMonde.Paint += new System.Windows.Forms.PaintEventHandler(this.picCarteMonde_Paint);
             this.picCarteMonde.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picCarteMonde_MouseClick);
             // 
+            // cmdOK
+            // 
+            this.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.cmdOK.Location = new System.Drawing.Point(12, 545);
+            this.cmdOK.Name = "cmdOK";
+            this.cmdOK.Size = new System.Drawing.Size(75, 23);
+            this.cmdOK.TabIndex = 1;
+            this.cmdOK.Text = "OK";
+            this.cmdOK.UseVisualStyleBackColor = true;
+            // 
+            // cmdAnnuler
+            // 
+            this.cmdAnnuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdAnnuler.Location = new System.Drawing.Point(93, 545);
+            this.cmdAnnuler.Name = "cmdAnnuler";
+            this.cmdAnnuler.Size = new System.Drawing.Size(75, 23);
+            this.cmdAnnuler.TabIndex = 2;
+            this.cmdAnnuler.Text = "Annuler";
+            this.cmdAnnuler.UseVisualStyleBackColor = true;
+            // 
             // ficheCarte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 556);
+            this.ClientSize = new System.Drawing.Size(1024, 571);
+            this.Controls.Add(this.cmdAnnuler);
+            this.Controls.Add(this.cmdOK);
             this.Controls.Add(this.picCarteMonde);
-            this.MaximumSize = new System.Drawing.Size(1040, 595);
-            this.MinimumSize = new System.Drawing.Size(1040, 595);
+            this.MaximumSize = new System.Drawing.Size(1040, 610);
+            this.MinimumSize = new System.Drawing.Size(1040, 610);
             this.Name = "ficheCarte";
             this.Text = "ficheCarte";
             ((System.ComponentModel.ISupportInitialize)(this.picCarteMonde)).EndInit();
@@ -63,5 +87,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox picCarteMonde;
+        private System.Windows.Forms.Button cmdOK;
+        private System.Windows.Forms.Button cmdAnnuler;
     }
 }
