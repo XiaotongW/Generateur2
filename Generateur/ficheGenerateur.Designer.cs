@@ -270,6 +270,7 @@
             this.lstAeroport.Name = "lstAeroport";
             this.lstAeroport.Size = new System.Drawing.Size(120, 290);
             this.lstAeroport.TabIndex = 0;
+            this.lstAeroport.Click += new System.EventHandler(this.lstAeroport_Click);
             this.lstAeroport.SelectedIndexChanged += new System.EventHandler(this.lstAeroport_SelectedIndexChanged);
             // 
             // ongAeronef

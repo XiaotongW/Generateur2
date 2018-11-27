@@ -329,6 +329,11 @@ namespace Generateur
                 selDebarquementAeronef.Enabled = false;
             }
         }
+
+        private void lstAeroport_Click(object sender, EventArgs e)
+        {
+            afficherListeAeronef();
+        }
     }
 }
 
