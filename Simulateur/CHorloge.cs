@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
-
-
 namespace Simulateur
 {
 	class CHorloge
@@ -15,8 +13,9 @@ namespace Simulateur
 		bool enPause;
 		int TimeSpeed;
 		int Heures, Minutes, Secondes;
+		TimeDelegue UpdateDelegue;
 
-		public CHorloge(int speed=1)
+		public CHorloge(TimeDelegue monDelegue,int speed=1)
 		{
 			m_Timer = new Timer((int)(1000 / speed));
 			m_Timer.Elapsed += OnTimedEvent;
@@ -26,6 +25,7 @@ namespace Simulateur
 			Heures = 0;
 			Minutes = 0;
 			Secondes = 0;
+			UpdateDelegue = monDelegue;
 		}
 
 		public string DebutHorloge()
@@ -74,7 +74,10 @@ namespace Simulateur
 
 		public override string ToString()
 		{
-			return string.Format("{0} : {1} : {2}",Heures,Minutes,Secondes);
+			string heuresStr = (Heures <= 9) ? "0" + Heures.ToString() : Heures.ToString();
+			string MinutesStr = (Minutes <= 9) ? "0" + Minutes.ToString() : Minutes.ToString();
+			string SecondesStr = (Secondes <= 9) ? "0" + Secondes.ToString() : Secondes.ToString();
+			return string.Format("{0} : {1} : {2}",heuresStr,MinutesStr,SecondesStr);
 		}
 
 		private void OnTimedEvent(Object source, ElapsedEventArgs e)
@@ -93,6 +96,8 @@ namespace Simulateur
 					Secondes -= 60;
 				} while (Secondes >= 60);
 			}
+
+			UpdateDelegue(ToString());
 		}
 	}
 }

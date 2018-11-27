@@ -12,14 +12,19 @@ namespace Simulateur
 {
 	public partial class fchSimulateur : Form
 	{
-		public fchSimulateur()
+		CSimulateur simulateur;
+		public TimeDelegue timeDelegue;
+
+		public fchSimulateur(CSimulateur simulateur)
 		{
+			this.simulateur = simulateur;
+			timeDelegue = new TimeDelegue(setHorloge);
 			InitializeComponent();
 		}
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+		public void setHorloge(string Time)
+		{
+			lblHorloge.Text = Time;
+		}
     }
 }

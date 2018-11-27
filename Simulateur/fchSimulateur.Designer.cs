@@ -28,131 +28,130 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupAeroport = new System.Windows.Forms.GroupBox();
-            this.lstAeroport = new System.Windows.Forms.DataGridView();
-            this.groupClient = new System.Windows.Forms.GroupBox();
-            this.lstClient = new System.Windows.Forms.DataGridView();
-            this.groupAvions = new System.Windows.Forms.GroupBox();
-            this.lstAvion = new System.Windows.Forms.DataGridView();
-            this.cmdPause = new System.Windows.Forms.Button();
-            this.lblHorloge = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupAeroport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).BeginInit();
-            this.groupClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstClient)).BeginInit();
-            this.groupAvions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstAvion)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Simulateur.Resource.carte_du_monde;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 228);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(998, 533);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // groupAeroport
-            // 
-            this.groupAeroport.Controls.Add(this.lstAeroport);
-            this.groupAeroport.Location = new System.Drawing.Point(38, 64);
-            this.groupAeroport.Name = "groupAeroport";
-            this.groupAeroport.Size = new System.Drawing.Size(216, 137);
-            this.groupAeroport.TabIndex = 1;
-            this.groupAeroport.TabStop = false;
-            this.groupAeroport.Text = "Aéroport";
-            // 
-            // lstAeroport
-            // 
-            this.lstAeroport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstAeroport.Location = new System.Drawing.Point(6, 19);
-            this.lstAeroport.Name = "lstAeroport";
-            this.lstAeroport.Size = new System.Drawing.Size(204, 112);
-            this.lstAeroport.TabIndex = 0;
-            // 
-            // groupClient
-            // 
-            this.groupClient.Controls.Add(this.lstClient);
-            this.groupClient.Location = new System.Drawing.Point(296, 64);
-            this.groupClient.Name = "groupClient";
-            this.groupClient.Size = new System.Drawing.Size(312, 137);
-            this.groupClient.TabIndex = 2;
-            this.groupClient.TabStop = false;
-            this.groupClient.Text = "Clients";
-            // 
-            // lstClient
-            // 
-            this.lstClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstClient.Location = new System.Drawing.Point(6, 19);
-            this.lstClient.Name = "lstClient";
-            this.lstClient.Size = new System.Drawing.Size(300, 112);
-            this.lstClient.TabIndex = 1;
-            // 
-            // groupAvions
-            // 
-            this.groupAvions.Controls.Add(this.lstAvion);
-            this.groupAvions.Location = new System.Drawing.Point(655, 64);
-            this.groupAvions.Name = "groupAvions";
-            this.groupAvions.Size = new System.Drawing.Size(365, 137);
-            this.groupAvions.TabIndex = 3;
-            this.groupAvions.TabStop = false;
-            this.groupAvions.Text = "Avions";
-            // 
-            // lstAvion
-            // 
-            this.lstAvion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstAvion.Location = new System.Drawing.Point(6, 19);
-            this.lstAvion.Name = "lstAvion";
-            this.lstAvion.Size = new System.Drawing.Size(353, 112);
-            this.lstAvion.TabIndex = 2;
-            // 
-            // cmdPause
-            // 
-            this.cmdPause.Location = new System.Drawing.Point(939, 26);
-            this.cmdPause.Name = "cmdPause";
-            this.cmdPause.Size = new System.Drawing.Size(75, 23);
-            this.cmdPause.TabIndex = 4;
-            this.cmdPause.Text = "Pause";
-            this.cmdPause.UseVisualStyleBackColor = true;
-            // 
-            // lblHorloge
-            // 
-            this.lblHorloge.AutoSize = true;
-            this.lblHorloge.BackColor = System.Drawing.Color.White;
-            this.lblHorloge.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHorloge.Location = new System.Drawing.Point(823, 712);
-            this.lblHorloge.Name = "lblHorloge";
-            this.lblHorloge.Size = new System.Drawing.Size(120, 31);
-            this.lblHorloge.TabIndex = 5;
-            this.lblHorloge.Text = "00:00:00";
-            this.lblHorloge.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // fchSimulateur
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 773);
-            this.Controls.Add(this.lblHorloge);
-            this.Controls.Add(this.cmdPause);
-            this.Controls.Add(this.groupAvions);
-            this.Controls.Add(this.groupClient);
-            this.Controls.Add(this.groupAeroport);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "fchSimulateur";
-            this.Text = " ";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupAeroport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).EndInit();
-            this.groupClient.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstClient)).EndInit();
-            this.groupAvions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstAvion)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.groupAeroport = new System.Windows.Forms.GroupBox();
+			this.lstAeroport = new System.Windows.Forms.DataGridView();
+			this.groupClient = new System.Windows.Forms.GroupBox();
+			this.lstClient = new System.Windows.Forms.DataGridView();
+			this.groupAvions = new System.Windows.Forms.GroupBox();
+			this.lstAvion = new System.Windows.Forms.DataGridView();
+			this.cmdPause = new System.Windows.Forms.Button();
+			this.lblHorloge = new System.Windows.Forms.Label();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.groupAeroport.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).BeginInit();
+			this.groupClient.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.lstClient)).BeginInit();
+			this.groupAvions.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.lstAvion)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::Simulateur.Resource.carte_du_monde;
+			this.pictureBox1.Location = new System.Drawing.Point(22, 228);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(998, 533);
+			this.pictureBox1.TabIndex = 0;
+			this.pictureBox1.TabStop = false;
+			// 
+			// groupAeroport
+			// 
+			this.groupAeroport.Controls.Add(this.lstAeroport);
+			this.groupAeroport.Location = new System.Drawing.Point(38, 64);
+			this.groupAeroport.Name = "groupAeroport";
+			this.groupAeroport.Size = new System.Drawing.Size(216, 137);
+			this.groupAeroport.TabIndex = 1;
+			this.groupAeroport.TabStop = false;
+			this.groupAeroport.Text = "Aéroport";
+			// 
+			// lstAeroport
+			// 
+			this.lstAeroport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.lstAeroport.Location = new System.Drawing.Point(6, 19);
+			this.lstAeroport.Name = "lstAeroport";
+			this.lstAeroport.Size = new System.Drawing.Size(204, 112);
+			this.lstAeroport.TabIndex = 0;
+			// 
+			// groupClient
+			// 
+			this.groupClient.Controls.Add(this.lstClient);
+			this.groupClient.Location = new System.Drawing.Point(296, 64);
+			this.groupClient.Name = "groupClient";
+			this.groupClient.Size = new System.Drawing.Size(312, 137);
+			this.groupClient.TabIndex = 2;
+			this.groupClient.TabStop = false;
+			this.groupClient.Text = "Clients";
+			// 
+			// lstClient
+			// 
+			this.lstClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.lstClient.Location = new System.Drawing.Point(6, 19);
+			this.lstClient.Name = "lstClient";
+			this.lstClient.Size = new System.Drawing.Size(300, 112);
+			this.lstClient.TabIndex = 1;
+			// 
+			// groupAvions
+			// 
+			this.groupAvions.Controls.Add(this.lstAvion);
+			this.groupAvions.Location = new System.Drawing.Point(655, 64);
+			this.groupAvions.Name = "groupAvions";
+			this.groupAvions.Size = new System.Drawing.Size(365, 137);
+			this.groupAvions.TabIndex = 3;
+			this.groupAvions.TabStop = false;
+			this.groupAvions.Text = "Avions";
+			// 
+			// lstAvion
+			// 
+			this.lstAvion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.lstAvion.Location = new System.Drawing.Point(6, 19);
+			this.lstAvion.Name = "lstAvion";
+			this.lstAvion.Size = new System.Drawing.Size(353, 112);
+			this.lstAvion.TabIndex = 2;
+			// 
+			// cmdPause
+			// 
+			this.cmdPause.Location = new System.Drawing.Point(939, 26);
+			this.cmdPause.Name = "cmdPause";
+			this.cmdPause.Size = new System.Drawing.Size(75, 23);
+			this.cmdPause.TabIndex = 4;
+			this.cmdPause.Text = "Pause";
+			this.cmdPause.UseVisualStyleBackColor = true;
+			// 
+			// lblHorloge
+			// 
+			this.lblHorloge.AutoSize = true;
+			this.lblHorloge.BackColor = System.Drawing.Color.White;
+			this.lblHorloge.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblHorloge.Location = new System.Drawing.Point(823, 712);
+			this.lblHorloge.Name = "lblHorloge";
+			this.lblHorloge.Size = new System.Drawing.Size(120, 31);
+			this.lblHorloge.TabIndex = 5;
+			this.lblHorloge.Text = "00:00:00";
+			// 
+			// fchSimulateur
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(1045, 773);
+			this.Controls.Add(this.lblHorloge);
+			this.Controls.Add(this.cmdPause);
+			this.Controls.Add(this.groupAvions);
+			this.Controls.Add(this.groupClient);
+			this.Controls.Add(this.groupAeroport);
+			this.Controls.Add(this.pictureBox1);
+			this.Name = "fchSimulateur";
+			this.Text = " ";
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.groupAeroport.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).EndInit();
+			this.groupClient.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.lstClient)).EndInit();
+			this.groupAvions.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.lstAvion)).EndInit();
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
