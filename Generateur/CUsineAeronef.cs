@@ -15,13 +15,12 @@ namespace Generateur
 
 		}
 
-		public CAeronef CreerAeronef(typeAvion Type,string Nom, int Vitesse, int Entretient, int Capacite, int Embarquement, int Debarquement, int Data)
+		public CAeronef CreerAeronef(typeAvion Type,string Nom, int Vitesse, int Entretient, int Capacite, int Embarquement, int Debarquement, int nombre)
 		{
 			if (Type == typeAvion.Passager)
-				return new CPassager(Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement, Data);
+				return new CPassager(Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement, nombre);
 			else if (Type == typeAvion.Cargo)
-				return new CCargo(Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement, Data);
-
+				return new CCargo(Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement, nombre);
 			return null;
 		}
 
