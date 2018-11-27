@@ -10,10 +10,6 @@ namespace Simulateur
 	{
 		private CAeroport Destination;
 
-		public CDansAeroport()
-		{
-
-		}
 
 		public CDansAeroport(CAeroport Destination)
 		{
