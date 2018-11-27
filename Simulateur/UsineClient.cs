@@ -36,6 +36,5 @@ namespace Simulateur
 		{// Aeronef Detresse
 			return new CDetresse(typeClient.Detresse,mapPosition);
 		}
-
 	}
 }
