@@ -1,12 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Generateur
@@ -28,12 +21,38 @@ namespace Generateur
 
         private void afficherListeAeronef()
         {
+            int nbAeronef;
+            int codeAeroport;
+            string modeleAeronef;
 
+            codeAeroport = lstAeroport.SelectedIndex;
+
+            lstAeroport.Items.Clear();
+
+            nbAeronef = m_generateur.recevoirAeroport(codeAeroport).nbAeronefs;
+
+            for (int i = 0; i < nbAeronef; i++)
+            {
+                modeleAeronef = m_generateur.recevoirAeroport(codeAeroport)[i].nom;
+                lstAeronef.Items.Add(modeleAeronef);
+            }
         }
 
         private void afficherListeAeroport()
         {
+            int nbAeroport;
+            string nomAeroport;
 
+            nbAeroport = m_generateur.nbAeroport();
+
+            lstAeroport.Items.Clear();
+            
+
+            for (int i = 0; i < nbAeroport; i++)
+            {
+                nomAeroport = m_generateur.recevoirAeroport(i).nom;
+                lstAeroport.Items.Add(nomAeroport);
+            }
         }
 
         private void afficherTypeAeronef()
@@ -138,6 +157,7 @@ namespace Generateur
             if (nomAeroport != "" && villeAeroport != "" && maxPassager != -1 && maxCargo != -1 && posX > -1 && posY > -1)
             {
                 m_generateur.ajouterAeroport(nomAeroport, villeAeroport, posX, posY, minPassager, maxPassager, minCargo, maxCargo);
+                afficherListeAeroport();
             }
 
         }
@@ -200,11 +220,6 @@ namespace Generateur
             }
         }
 
-        private void etqEmbarquementAeronef_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmdPositionAeroport_Click(object sender, EventArgs e)
         //Afficher le dialogue de selection de la position d'un aéroport
         {
@@ -216,8 +231,8 @@ namespace Generateur
                 posY = m_carte.PositionY;
 
                 //Debug
-                txtNomAeroport.Text = Convert.ToString(posX);
-                txtVilleAeroport.Text = Convert.ToString(posY);
+                //txtNomAeroport.Text = Convert.ToString(posX);
+                //txtVilleAeroport.Text = Convert.ToString(posY);
             }
             else
             {
@@ -287,6 +302,20 @@ namespace Generateur
             int aeroportChoisi;
 
             aeroportChoisi = lstAeronef.SelectedIndex;
+        }
+
+        private void cmbTypeAeronef_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTypeAeronef.SelectedIndex == 0 || cmbTypeAeronef.SelectedIndex == 1)
+            {
+                selEmbarquementAeronef.Enabled = true;
+                selDebarquementAeronef.Enabled = true;
+            }
+            else
+            {
+                selEmbarquementAeronef.Enabled = false;
+                selDebarquementAeronef.Enabled = false;
+            }
         }
     }
 }

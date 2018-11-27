@@ -15,8 +15,22 @@ namespace Generateur
             ListeAeroports = new List<CAeroport>();
         }
 
-        public void AjouterAeroport(CAeroport Aeroport)
+        public int nbAeroport
         {
+            get { return ListeAeroports.Count; }
+        }
+
+        public CAeroport this[int i]
+        {
+            get { return ListeAeroports.ElementAt(i); }
+            set { ListeAeroports[i] = value; }
+        }
+
+        public void AjouterAeroport(string nom, string ville, int posX, int posY, int minPass, int maxPass, int minCargo, int maxCargo)
+        {
+
+            CAeroport Aeroport = new CAeroport(nom, ville, minPass, maxPass, minCargo, maxCargo, posX, posY);
+
             ListeAeroports.Add(Aeroport);
         }
         public void RetirerAeroport(CAeroport Aeroport)

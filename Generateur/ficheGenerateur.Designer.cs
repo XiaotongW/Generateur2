@@ -351,7 +351,6 @@
             this.etqEmbarquementAeronef.Size = new System.Drawing.Size(120, 13);
             this.etqEmbarquementAeronef.TabIndex = 20;
             this.etqEmbarquementAeronef.Text = "Temps d\'embarquement";
-            this.etqEmbarquementAeronef.Click += new System.EventHandler(this.etqEmbarquementAeronef_Click);
             // 
             // selEmbarquementAeronef
             // 
@@ -395,6 +394,7 @@
             this.cmbTypeAeronef.Name = "cmbTypeAeronef";
             this.cmbTypeAeronef.Size = new System.Drawing.Size(100, 21);
             this.cmbTypeAeronef.TabIndex = 7;
+            this.cmbTypeAeronef.SelectedIndexChanged += new System.EventHandler(this.cmbTypeAeronef_SelectedIndexChanged);
             // 
             // etqCapaciteAeronef
             // 
