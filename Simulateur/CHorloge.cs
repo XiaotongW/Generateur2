@@ -3,88 +3,96 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
+
 
 
 namespace Simulateur
 {
 	class CHorloge
 	{
-		DateTime Debut;
-		DateTime DateNow;
+		Timer m_Timer;
 		bool enPause;
-		int[] TimeBuff;
 		int TimeSpeed;
+		int Heures, Minutes, Secondes;
 
 		public CHorloge(int speed=1)
 		{
-			Debut = DateTime.Now;
-			DateNow = Debut;
-			TimeBuff = new int[3];
-			for (int i =0; i < TimeBuff.Count(); i++)
-			{
-				TimeBuff[i] = 0;
-			}
+			m_Timer = new Timer((int)(1000 / speed));
+			m_Timer.Elapsed += OnTimedEvent;
+			m_Timer.AutoReset = false;
 			TimeSpeed = speed;
 			enPause = false;
+			Heures = 0;
+			Minutes = 0;
+			Secondes = 0;
 		}
 
 		public string DebutHorloge()
 		{
-			Debut = DateTime.Now;
-			enPause = false;
-			return this.ToString();
+			restart();
+			return ToString();
 		}
 
 		public void setPause()
 		{
 			enPause = true;
-			Debut = DateNow;
+			m_Timer.AutoReset = false;
+			m_Timer.Stop();
 		}
 
 		public void restart()
 		{
 			enPause = false;
-			DateNow = DateTime.Now;
-			Debut = DateNow;
+			m_Timer.AutoReset = true;
+			m_Timer.Start();
 		}
 
-		public bool isDiff()
+		public void resetTimer()
 		{
-			if (!enPause) DateNow = DateTime.Now;
-			return !enPause && ((Debut.Second != DateNow.Second) || (Debut.Minute != DateNow.Minute) || (Debut.Hour != DateNow.Second));
+			m_Timer = new Timer((int)(1000 / TimeSpeed));
+			m_Timer.Elapsed += OnTimedEvent;
+			Heures = 0;
+			Minutes = 0;
+			Secondes = 0;
+			restart();
+		}
+
+		public int speed
+		{
+			get { return TimeSpeed; }
+			set {
+				TimeSpeed = (value <= 1000 && value >= 1) ? value:TimeSpeed;
+				m_Timer.Interval = (int)(1000 / TimeSpeed);
+			}
+		}
+
+		public int secondesEcouler()
+		{
+			return Heures * 60 * 60 + Minutes * 60 + Secondes;
 		}
 
 		public override string ToString()
 		{
-			ChangeHorloge();
-			return string.Format("{0} : {1} : {2}", TimeBuff[0], TimeBuff[1], TimeBuff[2]);
+			return string.Format("{0} : {1} : {2}",Heures,Minutes,Secondes);
 		}
 
-		private void ChangeHorloge()
+		private void OnTimedEvent(Object source, ElapsedEventArgs e)
 		{
-			int buffMinutes = 0;
-			int buffHeure = 0;
-			if (!isDiff()) return;
-			TimeBuff[2] += Math.Abs(DateNow.Second - Debut.Second)*TimeSpeed;
-			if (TimeBuff[2] > 59){
-				buffMinutes = (int)(TimeBuff[0]/60);
-				TimeBuff[2] = TimeBuff[2]%60;
-				
-			}
-
-			TimeBuff[1] += (Math.Abs(DateNow.Minute - Debut.Minute)+buffMinutes);
-			if (TimeBuff[1] > 59)
+			if (!enPause) Secondes += 1;
+			if (Secondes > 59)
 			{
-				buffHeure = (int)(TimeBuff[1] / 60);
-				TimeBuff[1]= TimeBuff[1]%60;
+				do
+				{
+					Minutes += 1;
+					while (Minutes >= 60)
+					{
+						Heures = (Heures+1 == 24) ? 0 : Heures+1;
+						Minutes -= 60;
+					}
+					Secondes -= 60;
+				} while (Secondes >= 60);
 			}
-			TimeBuff[0] += (Math.Abs(DateNow.Hour - Debut.Hour) + buffHeure);
-			if (TimeBuff[0] > 23)
-			{
-				TimeBuff[0] = 0;
-			}
-			
-			Debut = DateNow;
 		}
 	}
 }
