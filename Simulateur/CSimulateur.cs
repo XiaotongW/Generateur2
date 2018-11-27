@@ -34,6 +34,7 @@ namespace Simulateur
 			catch (Exception)
 			{
 				formRun.Abort();
+				Application.Exit();
 			}
 		}
 	}
