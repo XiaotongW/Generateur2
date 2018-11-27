@@ -41,6 +41,8 @@
             this.picCarteMonde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.picCarteMonde.TabIndex = 0;
             this.picCarteMonde.TabStop = false;
+            this.picCarteMonde.Paint += new System.Windows.Forms.PaintEventHandler(this.picCarteMonde_Paint);
+            this.picCarteMonde.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picCarteMonde_MouseClick);
             // 
             // ficheCarte
             // 
