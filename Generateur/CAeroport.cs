@@ -90,9 +90,9 @@ namespace Generateur
 			Aeronefs.Add(Aeronef);
 			return Aeronefs.Count();
 		}
-		public void RetierAeronef (CAeronef Aeronef)
+		public void RetierAeronef (int i)
 		{
-			Aeronefs.RemoveAt(Aeronefs.FindIndex(e => e == Aeronef));
+			Aeronefs.RemoveAt(i);
 		}
 
 		public override string ToString()

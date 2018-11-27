@@ -33,19 +33,14 @@ namespace Generateur
 
             ListeAeroports.Add(Aeroport);
         }
-        public void RetirerAeroport(CAeroport Aeroport)
+        public void RetirerAeroport(int i)
         {
-            ListeAeroports.Remove(Aeroport);
+            ListeAeroports.RemoveAt(i);
         }
 
         public void AjouterAeronef(CAeroport Aeroport,CAeronef Aeronef)
         {
              Aeroport.AjouterAeronef(Aeronef);
         }
-        public void RetirerAeronef(CAeroport Aeroport,CAeronef Aeronef)
-        {
-            Aeroport.RetierAeronef(Aeronef);
-        }
-
     }
 }

@@ -78,6 +78,25 @@ namespace Generateur
             }
         }
 
+        private void afficherInfo()
+        {
+
+            if (tabCreation.SelectedIndex == 0)
+            {
+                if (lstAeroport.SelectedIndex != -1)
+                {
+                    etqInfo.Text = m_generateur.recevoirAeroport(lstAeroport.SelectedIndex).ToString();
+                }
+            }
+            else
+            {
+                if (lstAeronef.SelectedIndex != -1)
+                {
+                    etqInfo.Text = m_generateur.recevoirAeroport(lstAeroport.SelectedIndex)[lstAeronef.SelectedIndex].ToString();
+                }
+            }
+        }
+
         private void sauvegarderScenario()
         {
             SaveFileDialog sauvegarderFichier;
@@ -158,6 +177,7 @@ namespace Generateur
             {
                 m_generateur.ajouterAeroport(nomAeroport, villeAeroport, posX, posY, minPassager, maxPassager, minCargo, maxCargo);
                 afficherListeAeroport();
+                reinitialiserFormulaireAeroport();
             }
 
         }
@@ -215,6 +235,7 @@ namespace Generateur
                 }
 
                 afficherListeAeronef();
+                reinitialiserFormulaireAeronef();
             }
         }
 
@@ -254,6 +275,28 @@ namespace Generateur
 
         }
 
+        private void reinitialiserFormulaireAeroport()
+        {
+            txtNomAeroport.Text = "";
+            txtVilleAeroport.Text = "";
+            selMinPassager.Value = 0;
+            selMaxPassager.Value = 0;
+            selMinCargo.Value = 0;
+            selMaxCargo.Value = 0;
+            posX = -1;
+            posY = -1;
+        }
+
+        private void reinitialiserFormulaireAeronef()
+        {
+            txtModeleAeronef.Text = "";
+            txtCapaciteAeronef.Text = "";
+            selVitesseAeronef.Value = 0;
+            selEmbarquementAeronef.Value = 0;
+            selDebarquementAeronef.Value = 0;
+            selEntretienAeronef.Value = 0;
+        }
+
         private void cmdAjouterAeroport_Click(object sender, EventArgs e)
         {
             ajouterAeroport();
@@ -286,12 +329,20 @@ namespace Generateur
 
         private void cmdSupprimerAeroport_Click(object sender, EventArgs e)
         {
-            m_generateur.supprimerAeroport(lstAeroport.SelectedIndex);
+            if (lstAeroport.SelectedIndex != -1)
+            {
+                m_generateur.supprimerAeroport(lstAeroport.SelectedIndex);
+                afficherListeAeroport();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            m_generateur.supprimerAeronef(lstAeronef.SelectedIndex);
+            if (lstAeronef.SelectedIndex != -1)
+            {
+                m_generateur.supprimerAeronef(lstAeroport.SelectedIndex, lstAeronef.SelectedIndex);
+                afficherTypeAeronef();
+            }
         }
 
         private void réinitialiserLeScénarioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,9 +362,8 @@ namespace Generateur
 
         private void lstAeroport_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int aeroportChoisi;
-
-            aeroportChoisi = lstAeronef.SelectedIndex;
+            afficherListeAeronef();
+            afficherInfo();
         }
 
         private void cmbTypeAeronef_SelectedIndexChanged(object sender, EventArgs e)
@@ -333,6 +383,22 @@ namespace Generateur
         private void lstAeroport_Click(object sender, EventArgs e)
         {
             afficherListeAeronef();
+            afficherInfo();
+        }
+
+        private void lstAeronef_Click(object sender, EventArgs e)
+        {
+            afficherInfo();
+        }
+
+        private void lstAeronef_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            afficherInfo();
+        }
+
+        private void tabCreation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            afficherInfo();
         }
     }
 }

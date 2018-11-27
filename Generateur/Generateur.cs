@@ -65,12 +65,12 @@ namespace Generateur
 
         public void supprimerAeroport(int index)
         {
-
+            m_scenario.RetirerAeroport(index);
         }
 
-        public void supprimerAeronef(int index)
+        public void supprimerAeronef(int codeAeroport, int index)
         {
-
+            m_scenario[codeAeroport].RetierAeronef(index);
         }
     }
 }
