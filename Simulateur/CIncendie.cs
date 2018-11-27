@@ -9,7 +9,7 @@ namespace Simulateur
 	class CIncendie:CSurCarte
 	{
 		int Intensite;
-		public CIncendie(Position position, int Intensite):base(position)
+		public CIncendie(typeClient client,Position position, int Intensite):base(client,position)
 		{
 			this.Intensite = Intensite;
 		}

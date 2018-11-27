@@ -9,7 +9,7 @@ namespace Simulateur
 	class CPoint:CSurCarte
 	{
 		int rayon;
-		public CPoint(Position position, int rayon) : base(position)
+		public CPoint(typeClient client,Position position, int rayon) : base(client,position)
 		{
 			this.rayon = rayon;
 		}

@@ -11,7 +11,7 @@ namespace Simulateur
 		private CAeroport Destination;
 
 
-		public CDansAeroport(CAeroport Destination)
+		public CDansAeroport(typeClient client, CAeroport Destination):base(client)
 		{
 			this.Destination = Destination;
 		}

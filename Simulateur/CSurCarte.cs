@@ -9,7 +9,7 @@ namespace Simulateur
 	abstract class CSurCarte:CClients
 	{
 		Position m_position;
-		public CSurCarte(Position position)
+		public CSurCarte(typeClient client,Position position):base(client)
 		{
 			m_position = position;
 		}

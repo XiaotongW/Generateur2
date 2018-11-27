@@ -8,7 +8,7 @@ namespace Simulateur
 {
 	class CDetresse:CSurCarte
 	{
-		public CDetresse(Position position):base(position)
+		public CDetresse(typeClient client,Position position):base(client,position)
 		{
 
 		}
