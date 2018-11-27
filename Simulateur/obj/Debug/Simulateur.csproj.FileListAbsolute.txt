@@ -1,0 +1,5 @@
+C:\Users\ordi\OneDrive\Cégep\Session 7\Conception et Dév Prog\Travaux pratiques\TP2\Simulateur\Generateur2\Simulateur\obj\Debug\Simulateur.csprojAssemblyReference.cache
+C:\Users\ordi\OneDrive\Cégep\Session 7\Conception et Dév Prog\Travaux pratiques\TP2\Simulateur\Generateur2\Simulateur\obj\Debug\Simulateur.fchSimulateur.resources
+C:\Users\ordi\OneDrive\Cégep\Session 7\Conception et Dév Prog\Travaux pratiques\TP2\Simulateur\Generateur2\Simulateur\obj\Debug\Simulateur.Properties.Resources.resources
+C:\Users\ordi\OneDrive\Cégep\Session 7\Conception et Dév Prog\Travaux pratiques\TP2\Simulateur\Generateur2\Simulateur\obj\Debug\Simulateur.csproj.GenerateResource.cache
+C:\Users\ordi\OneDrive\Cégep\Session 7\Conception et Dév Prog\Travaux pratiques\TP2\Simulateur\Generateur2\Simulateur\obj\Debug\Simulateur.csproj.CoreCompileInputs.cache
