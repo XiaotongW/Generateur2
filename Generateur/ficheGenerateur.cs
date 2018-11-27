@@ -15,11 +15,15 @@ namespace Generateur
     {
         private Generateur m_generateur;
         private ficheCarte m_carte;
+        private int posX;
+        private int posY;
 
         public ficheGenerateur(Generateur generateur)
         {
             InitializeComponent();
             m_generateur = generateur;
+            posX = -1;
+            posY = -1;
         }
 
         private void afficherListeAeronef()
@@ -77,8 +81,6 @@ namespace Generateur
         {
             string nomAeroport;
             string villeAeroport;
-            int posX;
-            int posY;
             int minPassager;
             int maxPassager;
             int minCargo;
@@ -127,9 +129,15 @@ namespace Generateur
                 maxCargo = -1;
             }
 
-            if (nomAeroport != "" && villeAeroport != "" && maxPassager != -1 && maxCargo != -1)
+            if (posX < 0 || posY < 0)
             {
-                //m_generateur.ajouterAeroport(nomAeroport, villeAeroport, posX, posY, minPassager, maxPassager, minCargo, maxCargo);
+                MessageBox.Show("Veuillez choisir une position pour l'aéroport depuis le dialogue de" +
+                                                " sélection accesible depuis le bouton [ Position ... ]");
+            }
+
+            if (nomAeroport != "" && villeAeroport != "" && maxPassager != -1 && maxCargo != -1 && posX > -1 && posY > -1)
+            {
+                m_generateur.ajouterAeroport(nomAeroport, villeAeroport, posX, posY, minPassager, maxPassager, minCargo, maxCargo);
             }
 
         }
@@ -202,7 +210,21 @@ namespace Generateur
         {
             m_carte = new ficheCarte();
 
-            m_carte.ShowDialog();
+            if (m_carte.ShowDialog() == DialogResult.OK)
+            {
+                posX = m_carte.PositionX;
+                posY = m_carte.PositionY;
+
+                //Debug
+                txtNomAeroport.Text = Convert.ToString(posX);
+                txtVilleAeroport.Text = Convert.ToString(posY);
+            }
+            else
+            {
+                posX = -1;
+                posY = -1;
+            }
+
         }
 
         private void cmdAjouterAeroport_Click(object sender, EventArgs e)
