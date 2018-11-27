@@ -31,18 +31,19 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupAeroport = new System.Windows.Forms.GroupBox();
-            this.groupClient = new System.Windows.Forms.GroupBox();
-            this.groupAvions = new System.Windows.Forms.GroupBox();
             this.lstAeroport = new System.Windows.Forms.DataGridView();
+            this.groupClient = new System.Windows.Forms.GroupBox();
             this.lstClient = new System.Windows.Forms.DataGridView();
+            this.groupAvions = new System.Windows.Forms.GroupBox();
             this.lstAvion = new System.Windows.Forms.DataGridView();
             this.cmdPause = new System.Windows.Forms.Button();
+            this.lblHorloge = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupAeroport.SuspendLayout();
-            this.groupClient.SuspendLayout();
-            this.groupAvions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).BeginInit();
+            this.groupClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstClient)).BeginInit();
+            this.groupAvions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstAvion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +66,14 @@
             this.groupAeroport.TabStop = false;
             this.groupAeroport.Text = "Aéroport";
             // 
+            // lstAeroport
+            // 
+            this.lstAeroport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lstAeroport.Location = new System.Drawing.Point(6, 19);
+            this.lstAeroport.Name = "lstAeroport";
+            this.lstAeroport.Size = new System.Drawing.Size(204, 112);
+            this.lstAeroport.TabIndex = 0;
+            // 
             // groupClient
             // 
             this.groupClient.Controls.Add(this.lstClient);
@@ -75,6 +84,14 @@
             this.groupClient.TabStop = false;
             this.groupClient.Text = "Clients";
             // 
+            // lstClient
+            // 
+            this.lstClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lstClient.Location = new System.Drawing.Point(6, 19);
+            this.lstClient.Name = "lstClient";
+            this.lstClient.Size = new System.Drawing.Size(300, 112);
+            this.lstClient.TabIndex = 1;
+            // 
             // groupAvions
             // 
             this.groupAvions.Controls.Add(this.lstAvion);
@@ -84,22 +101,6 @@
             this.groupAvions.TabIndex = 3;
             this.groupAvions.TabStop = false;
             this.groupAvions.Text = "Avions";
-            // 
-            // lstAeroport
-            // 
-            this.lstAeroport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstAeroport.Location = new System.Drawing.Point(6, 19);
-            this.lstAeroport.Name = "lstAeroport";
-            this.lstAeroport.Size = new System.Drawing.Size(204, 112);
-            this.lstAeroport.TabIndex = 0;
-            // 
-            // lstClient
-            // 
-            this.lstClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstClient.Location = new System.Drawing.Point(6, 19);
-            this.lstClient.Name = "lstClient";
-            this.lstClient.Size = new System.Drawing.Size(300, 112);
-            this.lstClient.TabIndex = 1;
             // 
             // lstAvion
             // 
@@ -118,11 +119,24 @@
             this.cmdPause.Text = "Pause";
             this.cmdPause.UseVisualStyleBackColor = true;
             // 
+            // lblHorloge
+            // 
+            this.lblHorloge.AutoSize = true;
+            this.lblHorloge.BackColor = System.Drawing.Color.White;
+            this.lblHorloge.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHorloge.Location = new System.Drawing.Point(823, 712);
+            this.lblHorloge.Name = "lblHorloge";
+            this.lblHorloge.Size = new System.Drawing.Size(120, 31);
+            this.lblHorloge.TabIndex = 5;
+            this.lblHorloge.Text = "00:00:00";
+            this.lblHorloge.Click += new System.EventHandler(this.label1_Click);
+            // 
             // fchSimulateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 773);
+            this.Controls.Add(this.lblHorloge);
             this.Controls.Add(this.cmdPause);
             this.Controls.Add(this.groupAvions);
             this.Controls.Add(this.groupClient);
@@ -132,12 +146,13 @@
             this.Text = " ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupAeroport.ResumeLayout(false);
-            this.groupClient.ResumeLayout(false);
-            this.groupAvions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).EndInit();
+            this.groupClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstClient)).EndInit();
+            this.groupAvions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstAvion)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
@@ -152,6 +167,7 @@
         private System.Windows.Forms.GroupBox groupAvions;
         private System.Windows.Forms.DataGridView lstAvion;
         private System.Windows.Forms.Button cmdPause;
+        private System.Windows.Forms.Label lblHorloge;
     }
 }
 
