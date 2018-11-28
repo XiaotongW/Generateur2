@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Generateur
 {
-    class Position
+    public class Position
     {
         int X;
         int Y;

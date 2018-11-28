@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulateur
 {
-    class Position
+    public class Position
     {
         int X;
         int Y;
