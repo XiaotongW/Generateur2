@@ -31,6 +31,7 @@
             this.picCarteMonde = new System.Windows.Forms.PictureBox();
             this.cmdOK = new System.Windows.Forms.Button();
             this.cmdAnnuler = new System.Windows.Forms.Button();
+            this.txtPosition = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picCarteMonde)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,11 +67,20 @@
             this.cmdAnnuler.Text = "Annuler";
             this.cmdAnnuler.UseVisualStyleBackColor = true;
             // 
+            // txtPosition
+            // 
+            this.txtPosition.Enabled = false;
+            this.txtPosition.Location = new System.Drawing.Point(175, 547);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(143, 20);
+            this.txtPosition.TabIndex = 3;
+            // 
             // ficheCarte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 571);
+            this.Controls.Add(this.txtPosition);
             this.Controls.Add(this.cmdAnnuler);
             this.Controls.Add(this.cmdOK);
             this.Controls.Add(this.picCarteMonde);
@@ -89,5 +99,6 @@
         private System.Windows.Forms.PictureBox picCarteMonde;
         private System.Windows.Forms.Button cmdOK;
         private System.Windows.Forms.Button cmdAnnuler;
+        private System.Windows.Forms.TextBox txtPosition;
     }
 }
