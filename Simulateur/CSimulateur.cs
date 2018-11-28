@@ -13,6 +13,12 @@ namespace Simulateur
 	public delegate void TimeDelegue(string timeString);
 	public class CSimulateur
 	{
+		[STAThread]
+		static void Main()
+		{
+			new CSimulateur();
+		}
+
 		CHorloge Timer;
 		fchSimulateur VSimulateur;
 		Scenario m_scenario;
