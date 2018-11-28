@@ -9,7 +9,8 @@ namespace Simulateur
 {
 	public class CAeroport
 	{
-		string Nom;
+		string Nom,
+			Ville;
 		int MinPassager,
 			MaxPassager;
 		int MinCargo,
@@ -21,9 +22,10 @@ namespace Simulateur
 			Aeronefs = new List<CAeronef>();
 		}
 
-		public CAeroport(string Nom, int MinPassager, int MaxPassager, int MinCargo,int MaxCargo, int posX, int posY)
+		public CAeroport(string Nom, string Ville,int MinPassager, int MaxPassager, int MinCargo,int MaxCargo, int posX, int posY)
 		{
 			this.Nom = Nom;
+			this.Ville = Ville;
 			this.MinPassager = MinPassager;
 			this.MaxPassager = MaxPassager;
 			this.MinCargo = MinCargo;
@@ -36,6 +38,13 @@ namespace Simulateur
 			get { return Nom; }
 			set { Nom = value; }
 		}
+
+		public string ville
+		{
+			get { return Ville; }
+			set { Ville = value; }
+		}
+
 		public int Passager_Min
 		{
 			get { return MinPassager; }
