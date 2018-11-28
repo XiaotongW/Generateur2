@@ -10,12 +10,12 @@ namespace Generateur
 	public class CAeroport
 	{
 		string Nom,
-               Ville;
+			   Ville;
 		int MinPassager,
 			MaxPassager;
 		int MinCargo,
 			MaxCargo;
-		Position position;
+		Position m_position;
 		List<CAeronef> Aeronefs;
 		CUsineAeronef UsineAeronef;
 
@@ -23,18 +23,25 @@ namespace Generateur
 			Aeronefs = new List<CAeronef>();
 		}
 
-		public CAeroport(string Nom, string Ville, int MinPassager, int MaxPassager, int MinCargo,int MaxCargo, int posX, int posY)
+		public CAeroport(string Nom, string Ville, int MinPassager, int MaxPassager, int MinCargo, int MaxCargo, int posX, int posY)
 		{
 			this.Nom = Nom;
-            this.Ville = Ville;
+			this.Ville = Ville;
 			this.MinPassager = MinPassager;
 			this.MaxPassager = MaxPassager;
 			this.MinCargo = MinCargo;
 			this.MaxCargo = MaxCargo;
-			position = new Position(posX, posY);
+			m_position = new Position(posX, posY);
 			UsineAeronef = new CUsineAeronef();
 			Aeronefs = new List<CAeronef>();
 		}
+
+		public Position position
+		{
+			get { return m_position; }
+			set { m_position = value; }
+		}
+
 		public string nom
 		{
 			get { return Nom; }
@@ -65,11 +72,19 @@ namespace Generateur
 			get { return MaxCargo; }
 			set { MaxCargo = value; }
 		}
+
+		public CAeronef[] aeronefs{
+			get { return Aeronefs.ToArray(); }
+			set { Aeronefs = value.ToList(); }
+		}
+
 		public CAeronef this[int i]
 		{
 			get { return Aeronefs.ElementAt(i); }
 			set { Aeronefs[i] = value; }
 		}
+
+		[XmlIgnore]
         public int nbAeronefs
         {
             get { return Aeronefs.Count; }

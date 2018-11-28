@@ -7,6 +7,8 @@ using System.Xml.Serialization;
 
 namespace Generateur
 {
+	[XmlInclude(typeof(CPassager))]
+	[XmlInclude(typeof(CCargo))]
 	public abstract class CTransport : CAeronef
 	{
 		protected int Embarquement;

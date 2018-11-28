@@ -7,6 +7,12 @@ using System.Xml.Serialization;
 
 namespace Generateur
 {
+	[XmlInclude(typeof(CLoisir))]
+	[XmlInclude(typeof(CCiterne))]
+	[XmlInclude(typeof(CSecours))]
+	[XmlInclude(typeof(CPassager))]
+	[XmlInclude(typeof(CCargo))]
+	[XmlInclude(typeof(CTransport))]
 	public abstract class CAeronef
 	{
 		protected string Nom;
@@ -30,7 +36,7 @@ namespace Generateur
 		public string nom
 		{
 			get { return Nom; }
-			private set { Nom = value; }
+			set { Nom = value; }
 		}
 		public int vitesse
 		{
