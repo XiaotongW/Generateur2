@@ -47,5 +47,53 @@ namespace Simulateur
 		{
 			Aeroport.AjouterAeronef(Aeronef);
 		}
+
+        //creer des clients pour chaque aeroport
+        public void CreerClient()
+        {
+            foreach (CAeroport Aero in ListeAeroports)
+            {
+                Aero.AjouterClient(CreerVoyageur(Aero.Passager_Min,Aero.Passager_Max,Aero));
+                Aero.AjouterClient(CreerCargaison(Aero.Passager_Min, Aero.Passager_Max, Aero));
+            }
+        }
+
+        //Creer un lot de voyageur pour un aeroport
+        private CClients CreerVoyageur(int min,int max,CAeroport SelfAero)
+        {
+            Random rand = new Random(DateTime.Now.Millisecond);
+            int quantite = rand.Next((min * 10), (max * 10));
+           
+            UsineClient usineClient = new UsineClient();
+            return usineClient.creeClient(PrendreAeroportRand(SelfAero), quantite);
+        }
+
+        //Creer un lot de cargaison pour un aeroport
+        private CClients CreerCargaison(int min, int max, CAeroport SelfAero)
+        {
+            Random rand = new Random(DateTime.Now.Millisecond);
+            double quantite = rand.Next((min * 10), (max * 10));
+
+            UsineClient usineClient = new UsineClient();
+            return usineClient.creeClient(PrendreAeroportRand(SelfAero), quantite);
+        }
+
+        //Prend un aeroport random comme destination
+        private CAeroport PrendreAeroportRand(CAeroport SelfAero)
+        {
+            CAeroport Destination;
+            Random rand = new Random(DateTime.Now.Millisecond);
+            int ind = rand.Next(0, this.ListeAeroports.Count());
+
+            if (this.ListeAeroports[ind] != SelfAero)
+            {
+                Destination = this.ListeAeroports[ind];
+                return Destination;
+            }
+            else {
+                PrendreAeroportRand(SelfAero);
+            }
+            return null;
+        }
 	}
 }

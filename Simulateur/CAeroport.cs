@@ -17,9 +17,10 @@ namespace Simulateur
 			MaxCargo;
 		Position m_position;
 		List<CAeronef> Aeronefs;
-
+        List<CClients> Clients;
 		public CAeroport() {
 			Aeronefs = new List<CAeronef>();
+            Clients = new List<CClients>();
 		}
 
 		public CAeroport(string Nom, string Ville,int MinPassager, int MaxPassager, int MinCargo,int MaxCargo, int posX, int posY)
@@ -75,7 +76,16 @@ namespace Simulateur
 			get { return m_position; }
 			set { m_position = value; }
 		}
-		public int AjouterAeronef(CAeronef Aeronef)
+        public void AjouterClient(CClients Client)
+        {
+            Clients.Add(Client);
+        }
+        public void RetierClient(CClients Client)
+        {
+            Clients.RemoveAt(Clients.FindIndex(e => e == Client));
+        }
+
+        public int AjouterAeronef(CAeronef Aeronef)
 		{
 			Aeronefs.Add(Aeronef);
 			return Aeronefs.Count();
