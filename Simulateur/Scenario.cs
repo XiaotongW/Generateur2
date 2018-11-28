@@ -8,6 +8,12 @@ namespace Simulateur
 {
 	public class Scenario
 	{
+		[STAThread]
+		static void Main()
+		{
+			new CSimulateur();
+		}
+
 		List<CAeroport> ListeAeroports;
 
 		public Scenario()
