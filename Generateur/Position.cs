@@ -18,6 +18,19 @@ namespace Generateur
             Y = p_Y;
         }
 
+        public int x
+        {
+            get { return X; }
+            set { X = value; }
+        }
+
+        public int y
+        {
+            get { return Y; }
+            set { Y = value; }
+        }
+
+
         public string ConvertirPosition() //converti la coordonnée cartésienne en coordonée gps
         {
             string laPosition;//String a retourner
