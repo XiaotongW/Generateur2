@@ -2,36 +2,49 @@
 <Scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Aeroports>
     <CAeroport>
+      <position>
+        <x>517</x>
+        <y>134</y>
+      </position>
       <nom>Gardermoen</nom>
       <ville>Oslo</ville>
-      <Passager_Min>3</Passager_Min>
+      <Passager_Min>2</Passager_Min>
       <Passager_Max>7</Passager_Max>
-      <Cargo_Min>1</Cargo_Min>
-      <Cargo_Max>5</Cargo_Max>
+      <Cargo_Min>2</Cargo_Min>
+      <Cargo_Max>4</Cargo_Max>
       <aeronefs>
         <CAeronef xsi:type="CPassager">
-          <nom>Bombardier CS100</nom>
+          <nom>Airbus A320-233</nom>
           <vitesse>7</vitesse>
-          <entretient>6</entretient>
-          <capacite>150</capacite>
-          <embarquement>2</embarquement>
-          <debarquement>2</debarquement>
-          <Passager>0</Passager>
-        </CAeronef>
-        <CAeronef xsi:type="CPassager">
-          <nom>Sukhoi SuperJet 100</nom>
-          <vitesse>8</vitesse>
-          <entretient>8</entretient>
-          <capacite>95</capacite>
+          <entretient>7</entretient>
+          <capacite>175</capacite>
           <embarquement>4</embarquement>
           <debarquement>4</debarquement>
           <Passager>0</Passager>
         </CAeronef>
         <CAeronef xsi:type="CPassager">
-          <nom>Airbus A320-233</nom>
+          <nom>Bombardier CS100</nom>
           <vitesse>7</vitesse>
-          <entretient>6</entretient>
-          <capacite>200</capacite>
+          <entretient>7</entretient>
+          <capacite>130</capacite>
+          <embarquement>3</embarquement>
+          <debarquement>3</debarquement>
+          <Passager>0</Passager>
+        </CAeronef>
+        <CAeronef xsi:type="CPassager">
+          <nom>Sukhoi SuperJet 100</nom>
+          <vitesse>6</vitesse>
+          <entretient>5</entretient>
+          <capacite>90</capacite>
+          <embarquement>2</embarquement>
+          <debarquement>2</debarquement>
+          <Passager>0</Passager>
+        </CAeronef>
+        <CAeronef xsi:type="CPassager">
+          <nom>McDonnell-Douglas MD-82</nom>
+          <vitesse>6</vitesse>
+          <entretient>10</entretient>
+          <capacite>155</capacite>
           <embarquement>4</embarquement>
           <debarquement>4</debarquement>
           <Passager>0</Passager>
@@ -39,20 +52,24 @@
       </aeronefs>
     </CAeroport>
     <CAeroport>
-      <nom>Flesland</nom>
-      <ville>Bergen</ville>
+      <position>
+        <x>540</x>
+        <y>87</y>
+      </position>
+      <nom>Langnes</nom>
+      <ville>Tromsø</ville>
       <Passager_Min>1</Passager_Min>
-      <Passager_Max>3</Passager_Max>
+      <Passager_Max>4</Passager_Max>
       <Cargo_Min>0</Cargo_Min>
       <Cargo_Max>1</Cargo_Max>
       <aeronefs>
         <CAeronef xsi:type="CPassager">
-          <nom>Bombardier CRJ-200</nom>
+          <nom>Bombardier CRJ200</nom>
           <vitesse>6</vitesse>
-          <entretient>5</entretient>
+          <entretient>7</entretient>
           <capacite>50</capacite>
-          <embarquement>5</embarquement>
-          <debarquement>5</debarquement>
+          <embarquement>1</embarquement>
+          <debarquement>1</debarquement>
           <Passager>0</Passager>
         </CAeronef>
         <CAeronef xsi:type="CPassager">
@@ -60,8 +77,8 @@
           <vitesse>5</vitesse>
           <entretient>5</entretient>
           <capacite>70</capacite>
-          <embarquement>5</embarquement>
-          <debarquement>5</debarquement>
+          <embarquement>2</embarquement>
+          <debarquement>2</debarquement>
           <Passager>0</Passager>
         </CAeronef>
       </aeronefs>
