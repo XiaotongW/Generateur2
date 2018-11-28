@@ -95,14 +95,14 @@ namespace Generateur
             {
                 if (lstAeroport.SelectedIndex != -1)
                 {
-                    etqInfo.Text = m_generateur.recevoirAeroport(lstAeroport.SelectedIndex).ToString();
+                    txtInfo.Text = m_generateur.recevoirAeroport(lstAeroport.SelectedIndex).ToString();
                 }
             }
             else
             {
                 if (lstAeronef.SelectedIndex != -1)
                 {
-                    etqInfo.Text = m_generateur.recevoirAeroport(lstAeroport.SelectedIndex)[lstAeronef.SelectedIndex].ToString();
+                    txtInfo.Text = m_generateur.recevoirAeroport(lstAeroport.SelectedIndex)[lstAeronef.SelectedIndex].ToString();
                 }
             }
         }

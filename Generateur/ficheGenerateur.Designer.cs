@@ -72,8 +72,7 @@
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scénarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.réinitialiserLeScénarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statInfo = new System.Windows.Forms.StatusStrip();
-            this.etqInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtInfo = new System.Windows.Forms.TextBox();
             this.tabCreation.SuspendLayout();
             this.ongAeroport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selMaxCargo)).BeginInit();
@@ -86,7 +85,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.selEmbarquementAeronef)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selVitesseAeronef)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.statInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCreation
@@ -511,28 +509,20 @@
             this.réinitialiserLeScénarioToolStripMenuItem.Text = "Réinitialiser le scénario";
             this.réinitialiserLeScénarioToolStripMenuItem.Click += new System.EventHandler(this.réinitialiserLeScénarioToolStripMenuItem_Click);
             // 
-            // statInfo
+            // txtInfo
             // 
-            this.statInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.etqInfo});
-            this.statInfo.Location = new System.Drawing.Point(0, 393);
-            this.statInfo.Name = "statInfo";
-            this.statInfo.Size = new System.Drawing.Size(321, 22);
-            this.statInfo.TabIndex = 2;
-            this.statInfo.Text = "statusStrip1";
-            // 
-            // etqInfo
-            // 
-            this.etqInfo.Name = "etqInfo";
-            this.etqInfo.Size = new System.Drawing.Size(0, 17);
-            this.etqInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtInfo.Enabled = false;
+            this.txtInfo.Location = new System.Drawing.Point(12, 391);
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.Size = new System.Drawing.Size(296, 20);
+            this.txtInfo.TabIndex = 2;
             // 
             // ficheGenerateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(321, 415);
-            this.Controls.Add(this.statInfo);
+            this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.tabCreation);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ficheGenerateur";
@@ -553,8 +543,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.selVitesseAeronef)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.statInfo.ResumeLayout(false);
-            this.statInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,7 +594,6 @@
         private System.Windows.Forms.ToolStripMenuItem réinitialiserLeScénarioToolStripMenuItem;
         private System.Windows.Forms.Button cmdSupprimerAeroport;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.StatusStrip statInfo;
-        private System.Windows.Forms.ToolStripStatusLabel etqInfo;
+        private System.Windows.Forms.TextBox txtInfo;
     }
 }

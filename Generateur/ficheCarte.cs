@@ -39,7 +39,7 @@ namespace Generateur
             m_clique = true;
 
             picCarteMonde.Refresh();
-            //MessageBox.Show(new Position(PositionX, PositionY).ConvertirPosition());
+            txtPosition.Text = new Position(PositionX, PositionY).ConvertirPosition();
         }
 
         private void picCarteMonde_Paint(object sender, PaintEventArgs e)
