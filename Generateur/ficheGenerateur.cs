@@ -82,7 +82,8 @@ namespace Generateur
 
                 if (ouvrirFichier.ShowDialog() == DialogResult.OK)
                 {
-
+                    m_generateur.chargerScenario(ouvrirFichier.FileName);
+                    afficherListeAeroport();
                 }
             }
         }
@@ -117,7 +118,7 @@ namespace Generateur
 
                 if (sauvegarderFichier.ShowDialog() == DialogResult.OK)
                 {
-
+                    m_generateur.sauvegarderScenario(sauvegarderFichier.FileName);
                 }
             }
         }

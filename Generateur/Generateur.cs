@@ -30,19 +30,19 @@ namespace Generateur
             Generateur generateur = new Generateur();
 		}
 
-        public void sauvegarderScenario()
+        public void sauvegarderScenario(string nomFichier)
         {
 			XmlSerializer xs = new XmlSerializer(typeof(Scenario));
-			using (StreamWriter wr = new StreamWriter("scenario.xml"))
+			using (StreamWriter wr = new StreamWriter(nomFichier))
 			{
 				xs.Serialize(wr, scenario);
 			}
         }
 
-        public void chargerScenario()
+        public void chargerScenario(string nomFichier)
         {
 			XmlSerializer xs = new XmlSerializer(typeof(Scenario));
-			using (StreamReader sr = new StreamReader("scenario.xml"))
+			using (StreamReader sr = new StreamReader(nomFichier))
 			{
 				scenario = xs.Deserialize(sr) as Scenario;
 			}
