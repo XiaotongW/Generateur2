@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Aeroports>
+    <CAeroport>
+      <nom>Gardermoen</nom>
+      <ville>Oslo</ville>
+      <Passager_Min>3</Passager_Min>
+      <Passager_Max>7</Passager_Max>
+      <Cargo_Min>1</Cargo_Min>
+      <Cargo_Max>5</Cargo_Max>
+      <aeronefs>
+        <CAeronef xsi:type="CPassager">
+          <nom>Bombardier CS100</nom>
+          <vitesse>7</vitesse>
+          <entretient>6</entretient>
+          <capacite>150</capacite>
+          <embarquement>2</embarquement>
+          <debarquement>2</debarquement>
+          <Passager>0</Passager>
+        </CAeronef>
+        <CAeronef xsi:type="CPassager">
+          <nom>Sukhoi SuperJet 100</nom>
+          <vitesse>8</vitesse>
+          <entretient>8</entretient>
+          <capacite>95</capacite>
+          <embarquement>4</embarquement>
+          <debarquement>4</debarquement>
+          <Passager>0</Passager>
+        </CAeronef>
+        <CAeronef xsi:type="CPassager">
+          <nom>Airbus A320-233</nom>
+          <vitesse>7</vitesse>
+          <entretient>6</entretient>
+          <capacite>200</capacite>
+          <embarquement>4</embarquement>
+          <debarquement>4</debarquement>
+          <Passager>0</Passager>
+        </CAeronef>
+      </aeronefs>
+    </CAeroport>
+    <CAeroport>
+      <nom>Flesland</nom>
+      <ville>Bergen</ville>
+      <Passager_Min>1</Passager_Min>
+      <Passager_Max>3</Passager_Max>
+      <Cargo_Min>0</Cargo_Min>
+      <Cargo_Max>1</Cargo_Max>
+      <aeronefs>
+        <CAeronef xsi:type="CPassager">
+          <nom>Bombardier CRJ-200</nom>
+          <vitesse>6</vitesse>
+          <entretient>5</entretient>
+          <capacite>50</capacite>
+          <embarquement>5</embarquement>
+          <debarquement>5</debarquement>
+          <Passager>0</Passager>
+        </CAeronef>
+        <CAeronef xsi:type="CPassager">
+          <nom>Bombardier Q400</nom>
+          <vitesse>5</vitesse>
+          <entretient>5</entretient>
+          <capacite>70</capacite>
+          <embarquement>5</embarquement>
+          <debarquement>5</debarquement>
+          <Passager>0</Passager>
+        </CAeronef>
+      </aeronefs>
+    </CAeroport>
+  </Aeroports>
+</Scenario>
