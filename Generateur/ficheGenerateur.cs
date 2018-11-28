@@ -15,6 +15,7 @@ namespace Generateur
         {
             InitializeComponent();
             m_generateur = generateur;
+
             posX = -1;
             posY = -1;
         }

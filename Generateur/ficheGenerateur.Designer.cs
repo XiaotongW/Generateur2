@@ -525,6 +525,7 @@
             // 
             this.etqInfo.Name = "etqInfo";
             this.etqInfo.Size = new System.Drawing.Size(0, 17);
+            this.etqInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ficheGenerateur
             // 
