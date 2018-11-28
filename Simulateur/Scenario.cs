@@ -58,6 +58,13 @@ namespace Simulateur
             }
         }
 
+        public CClients CreerSurCarte(typeClient type)
+        {
+            Random rand = new Random(DateTime.Now.Millisecond);
+            int x = rand.Next(0, Resource.carte_du_monde.Width);
+            int y = rand.Next(0, Resource.carte_du_monde.Height);
+        }
+
         //Creer un lot de voyageur pour un aeroport
         private CClients CreerVoyageur(int min,int max,CAeroport SelfAero)
         {
