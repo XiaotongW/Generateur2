@@ -234,17 +234,20 @@ namespace Generateur
 
             if (modeleAeronef != "" && capaciteAeronef != -1)
             {
-                if (cmbTypeAeronef.SelectedIndex == 0 || cmbTypeAeronef.SelectedIndex == 1)
+                if (codeAeroport != -1)
                 {
-                    m_generateur.ajouterAeronef(codeAeroport, modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, embarquementAeronef, debarquementAeronef, maintenanceAeronef);
-                }
-                else
-                {
-                    m_generateur.ajouterAeronef(codeAeroport, modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, maintenanceAeronef);
-                }
+                    if (cmbTypeAeronef.SelectedIndex == 0 || cmbTypeAeronef.SelectedIndex == 1)
+                    {
+                        m_generateur.ajouterAeronef(codeAeroport, modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, embarquementAeronef, debarquementAeronef, maintenanceAeronef);
+                    }
+                    else
+                    {
+                        m_generateur.ajouterAeronef(codeAeroport, modeleAeronef, capaciteAeronef, typeAeronef, vitesseAeronef, maintenanceAeronef);
+                    }
 
-                afficherListeAeronef();
-                reinitialiserFormulaireAeronef();
+                    afficherListeAeronef();
+                    reinitialiserFormulaireAeronef();
+                }
             }
         }
 
