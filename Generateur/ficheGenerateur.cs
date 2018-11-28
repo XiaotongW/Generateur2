@@ -27,14 +27,17 @@ namespace Generateur
 
             codeAeroport = lstAeroport.SelectedIndex;
 
-            lstAeronef.Items.Clear();
-
-            nbAeronef = m_generateur.recevoirAeroport(codeAeroport).nbAeronefs;
-
-            for (int i = 0; i < nbAeronef; i++)
+            if (codeAeroport != -1)
             {
-                modeleAeronef = m_generateur.recevoirAeroport(codeAeroport)[i].nom;
-                lstAeronef.Items.Add(modeleAeronef);
+                lstAeronef.Items.Clear();
+
+                nbAeronef = m_generateur.recevoirAeroport(codeAeroport).nbAeronefs;
+
+                for (int i = 0; i < nbAeronef; i++)
+                {
+                    modeleAeronef = m_generateur.recevoirAeroport(codeAeroport)[i].nom;
+                    lstAeronef.Items.Add(modeleAeronef);
+                }
             }
         }
 
@@ -46,12 +49,14 @@ namespace Generateur
             nbAeroport = m_generateur.nbAeroport();
 
             lstAeroport.Items.Clear();
-            
 
-            for (int i = 0; i < nbAeroport; i++)
+            if (nbAeroport > 0)
             {
-                nomAeroport = m_generateur.recevoirAeroport(i).nom;
-                lstAeroport.Items.Add(nomAeroport);
+                for (int i = 0; i < nbAeroport; i++)
+                {
+                    nomAeroport = m_generateur.recevoirAeroport(i).nom;
+                    lstAeroport.Items.Add(nomAeroport);
+                }
             }
         }
 
