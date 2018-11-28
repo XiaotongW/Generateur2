@@ -22,29 +22,37 @@ namespace Generateur
         {
             string laPosition;//String a retourner
 
-            int L = 1920;//longeur de l'image
-            int H = 1080;//Hauteur de l'image
+            int L = 1000;//longeur de l'image
+            int H = 531;//Hauteur de l'image
             int XM = L / 2;//X milieu
             int YM = H / 2; //Y milieu
+            float result;
             int degrerX = 0; //degrer en X
             int degrerY = 0; //degrer en Y
             int MinuteX = 0; //Minute en X
             int MinuteY = 0; // minute en Y
-            
+            string[] Separateur;//Separe les degrer des minutes
 
             TrouverCardinalite(XM, YM);
 
             switch (Ycardinalite)
             {
-                case 'N':
-                    degrerY = ((Y - YM) / YM) * 90;
-                    if (((Y - YM) % YM) != 0)
+                case 'S':
+                    result = (((Y - YM) / (float)YM) * 90);
+                    Separateur = result.ToString().Split(',');
+                    degrerY = int.Parse(Separateur[0]);
+
+                    if (((Y - YM) % (float)YM) != 0)
                     {
-                        string[] Separateur;//Separe les degrer des minutes
-                        float restant = ((Y - YM) / (float)YM);
-                        
-                        Separateur = restant.ToString().Split(',');
-                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        float restant;
+                        if (Separateur[1].ToString().Length > 1)
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        }
+                        else
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString());
+                        }
                         restant = restant / 100;
                         MinuteY = (int)(restant * 60);
                     }
@@ -53,15 +61,23 @@ namespace Generateur
                         MinuteY = 0;
                     }
                     break;
-                case 'S':
-                    degrerY = ((Y + YM) / YM) * 90;
-                    if (((Y + YM) % YM) != 0)
+                case 'N':
+                    result = (((Y + YM) / (float)YM) * 90);
+                    Separateur = result.ToString().Split(',');
+                    degrerY = 180 - int.Parse(Separateur[0]);
+
+                    if (((Y + YM) % (float)YM) != 0)
                     {
-                        string[] Separateur;//Separe les degrer des minutes
-                        float restant = (Y + YM) / (float)YM;
-                       
-                        Separateur = restant.ToString().Split(',');
-                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+
+                        float restant;
+                        if (Separateur[1].ToString().Length > 1)
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        }
+                        else
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString());
+                        }
                         restant = restant / 100;
                         MinuteY = (int)(restant * 60);
                     }
@@ -74,14 +90,22 @@ namespace Generateur
             switch (Xcardinalite)
             {
                 case 'E':
-                    degrerX = ((X - XM) / XM) * 180;
-                    if (((X - XM) % XM) != 0)
+                    result = (((X - XM) / (float)XM) * 180);
+                    Separateur = result.ToString().Split(',');
+                    degrerX = int.Parse(Separateur[0]);
+
+                    if (((X - XM) % (float)XM) != 0)
                     {
-                        string[] Separateur;//Separe les degrer des minutes
-                        float restant = ((X - XM) / (float)XM);
-                  
-                        Separateur = restant.ToString().Split(',');
-                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+
+                        float restant;
+                        if (Separateur[1].ToString().Length > 1)
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        }
+                        else
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString());
+                        }
                         restant = restant / 100;
                         MinuteX = (int)(restant * 60);
                     }
@@ -91,13 +115,22 @@ namespace Generateur
                     }
                     break;
                 case 'O':
-                    degrerX = ((X + XM) / XM) * 180;
-                    if (((X + XM) % XM) != 0)
+                    result = (((X + XM) / (float)XM) * 180);
+                    Separateur = result.ToString().Split(',');
+                    degrerX = 360 - int.Parse(Separateur[0]);
+
+                    if (((X + XM) % (float)XM) != 0)
                     {
-                        string[] Separateur;//Separe les degrer des minutes
-                        float restant = ((X + XM) / (float)XM);
-                        Separateur = restant.ToString().Split(',');
-                        restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+
+                        float restant;
+                        if (Separateur[1].ToString().Length > 1)
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString() + Separateur[1][1].ToString());
+                        }
+                        else
+                        {
+                            restant = int.Parse(Separateur[1][0].ToString());
+                        }
                         restant = restant / 100;
                         MinuteX = (int)(restant * 60);
                     }
@@ -116,11 +149,11 @@ namespace Generateur
         {
             if (Y > YM)
             {
-                Ycardinalite = 'N';
+                Ycardinalite = 'S';
             }
             else if (Y < YM)
             {
-                Ycardinalite = 'S';
+                Ycardinalite = 'N';
             }
             else { Ycardinalite = '0'; }
 
