@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulateur
 {
-	class UsineClient
+	public class UsineClient
 	{
 		public UsineClient()
 		{

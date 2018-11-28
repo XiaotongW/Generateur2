@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Simulateur
 {
 	public enum typeClient {Voyageur,Cargaison,Point,Incendie,Detresse};
-	abstract class CClients
+	public abstract class CClients
 	{
 		protected typeClient m_client;
 		public CClients(typeClient client)
