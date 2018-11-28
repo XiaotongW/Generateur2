@@ -40,7 +40,7 @@ namespace Simulateur
 			set { m_scenario = value; }
 		}
 
-		private void chargerScenario(string LeScenario)
+		public void chargerScenario(string LeScenario)
 		{
 			XmlSerializer xs = new XmlSerializer(typeof(Scenario));
 			using (StreamReader sr = new StreamReader(LeScenario))
