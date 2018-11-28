@@ -38,6 +38,8 @@ namespace Generateur
                     modeleAeronef = m_generateur.recevoirAeroport(codeAeroport)[i].nom;
                     lstAeronef.Items.Add(modeleAeronef);
                 }
+
+                lstAeronef.SelectedIndex = nbAeronef - 1;
             }
         }
 
@@ -57,6 +59,8 @@ namespace Generateur
                     nomAeroport = m_generateur.recevoirAeroport(i).nom;
                     lstAeroport.Items.Add(nomAeroport);
                 }
+
+                lstAeroport.SelectedIndex = nbAeroport - 1;
             }
         }
 
@@ -85,7 +89,6 @@ namespace Generateur
 
         private void afficherInfo()
         {
-
             if (tabCreation.SelectedIndex == 0)
             {
                 if (lstAeroport.SelectedIndex != -1)
