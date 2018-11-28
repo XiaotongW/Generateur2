@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace Generateur
 {
+
 	public class CPassager:CTransport
 	{
 		int nbPassager;

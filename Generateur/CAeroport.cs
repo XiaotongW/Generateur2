@@ -35,6 +35,7 @@ namespace Generateur
 			UsineAeronef = new CUsineAeronef();
 			Aeronefs = new List<CAeronef>();
 		}
+
 		public string nom
 		{
 			get { return Nom; }
@@ -65,11 +66,19 @@ namespace Generateur
 			get { return MaxCargo; }
 			set { MaxCargo = value; }
 		}
+
+		public CAeronef[] aeronefs{
+			get { return Aeronefs.ToArray(); }
+			set { Aeronefs = value.ToList(); }
+		}
+
 		public CAeronef this[int i]
 		{
 			get { return Aeronefs.ElementAt(i); }
 			set { Aeronefs[i] = value; }
 		}
+
+		[XmlIgnore]
         public int nbAeronefs
         {
             get { return Aeronefs.Count; }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Generateur
 {
@@ -28,15 +30,29 @@ namespace Generateur
             Generateur generateur = new Generateur();
 		}
 
-        private void sauvegarderScenario()
+        public void sauvegarderScenario()
         {
-
+			XmlSerializer xs = new XmlSerializer(typeof(Scenario));
+			using (StreamWriter wr = new StreamWriter("scenario.xml"))
+			{
+				xs.Serialize(wr, scenario);
+			}
         }
 
-        private void chargerScenario()
+        public void chargerScenario()
         {
+			XmlSerializer xs = new XmlSerializer(typeof(Scenario));
+			using (StreamReader sr = new StreamReader("scenario.xml"))
+			{
+				scenario = xs.Deserialize(sr) as Scenario;
+			}
+		}
 
-        }
+		public Scenario scenario
+		{
+			get { return m_scenario; }
+			set { m_scenario = value; }
+		}
 
         public CAeroport recevoirAeroport(int i)
         {
@@ -55,7 +71,7 @@ namespace Generateur
 		
         public void ajouterAeronef(int codeAeroport, string modele, int capacite, typeAvion type, int vitesse, int embarquement, int debarquement, int maintenance)
         {
-            m_scenario[codeAeroport].CreeAeronef(type, modele, vitesse, maintenance, capacite, embarquement, debarquement, 0);
+             m_scenario[codeAeroport].CreeAeronef(type, modele, vitesse, maintenance, capacite, embarquement, debarquement, 0);
         }
 
         public void ajouterAeronef(int codeAeroport, string modele, int capacite, typeAvion type, int vitesse, int maintenance)

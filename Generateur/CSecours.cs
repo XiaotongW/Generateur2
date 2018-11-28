@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace Generateur
 {
+
 	public class CSecours :CAeronef
 	{
 		public CSecours()
