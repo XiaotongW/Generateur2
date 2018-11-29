@@ -41,6 +41,11 @@ namespace Simulateur
 			get { return ListeAeroports.Count; }
 		}
 
+		public CAeronef getAeronefVol(int i)
+		{
+			return (i >=0 && i<ListeAeronefVol.Count)?ListeAeronefVol.ElementAt(i):null;
+		}
+
 		public int nbAeronefVol
 		{
 			get { return ListeAeronefVol.Count(); }
