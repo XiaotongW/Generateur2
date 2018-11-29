@@ -56,18 +56,81 @@ namespace Simulateur
         {
             foreach (CAeroport Aero in ListeAeroports)
             {
-                Aero.AjouterClient(CreerVoyageur(Aero.Passager_Min,Aero.Passager_Max,Aero));
+                Aero.AjouterClient(CreerVoyageur(Aero.Passager_Min, Aero.Passager_Max, Aero));
                 Aero.AjouterClient(CreerCargaison(Aero.Passager_Min, Aero.Passager_Max, Aero));
             }
+
+            Random rand = new Random(DateTime.Now.Millisecond);
+            int ind = rand.Next(1, 3);//Indice pour creer le nombre de point de detresse
+            for (int i = ind; i <= 3; i++)
+            {
+                CreerPointDetresse();
+            }
+
+            ind = rand.Next(1, 2);//Indice pour creer le nombre de point d'incendie
+            for (int i = ind; i <= 3; i++)
+            {
+                CreerSurCarte(typeClient.Incendie);
+            }
+            CreerSurCarte(typeClient.Point);
         }
 
-        /*public CClients CreerSurCarte(typeClient type)
+        //Creer un point de detresse
+        private void CreerPointDetresse()
         {
             Random rand = new Random(DateTime.Now.Millisecond);
+
+            //creer un position aléatoire sur la carte
             int x = rand.Next(0, Resource.carte_du_monde.Width);
             int y = rand.Next(0, Resource.carte_du_monde.Height);
-			return null;
-        }*/
+            Position mapPosition = new Position(x, y);
+
+            UsineClient usineClient = new UsineClient();
+            TrouverAeroportProche(mapPosition).AjouterClient(usineClient.creeClient(mapPosition));
+        }
+
+        //Creer un incendit ou un point d'intérêt
+        private void CreerSurCarte(typeClient type)
+        {
+            Random rand = new Random(DateTime.Now.Millisecond);
+            int value = rand.Next(1, 3); //Creer un valeur aleatoire
+
+            //creer un position aléatoire sur la carte
+            int x = rand.Next(0, Resource.carte_du_monde.Width);
+            int y = rand.Next(0, Resource.carte_du_monde.Height);
+            Position mapPosition = new Position(x,y);
+
+            UsineClient usineClient = new UsineClient();
+            TrouverAeroportProche(mapPosition).AjouterClient(usineClient.creeClient(type,mapPosition,value));
+        }
+
+        //trouve l'aeroport la plus proche d'une position
+        private CAeroport TrouverAeroportProche(Position mapPosition)
+        {
+            CAeroport aeroport = null;//Aeroport actuellement le plus près
+            foreach (CAeroport Aero in this.ListeAeroports)
+            {
+                if (aeroport == null)
+                {
+                    aeroport = Aero;
+                }
+                else if (CalculerDistance(aeroport.position,mapPosition) > CalculerDistance(Aero.position,mapPosition))
+                {
+                    aeroport = Aero;
+                }
+            }
+            return aeroport;
+        }
+
+        //calcule la distance entre 2 position sur la carte
+        private double CalculerDistance(Position PosiAero,Position mapPosition)
+        {
+            double Distance;
+            Distance = Math.Sqrt((Math.Abs(PosiAero.x - mapPosition.x) ^ 2) + (Math.Abs(PosiAero.y - mapPosition.y) ^ 2));
+
+            return Distance;
+        }
+        
 
         //Creer un lot de voyageur pour un aeroport
         private CClients CreerVoyageur(int min,int max,CAeroport SelfAero)
