@@ -12,6 +12,7 @@ namespace Simulateur
         public UpdateDelegueClient UpdateClient;
 		List<CAeroport> ListeAeroports;
 		List<CAeronef> ListeAeronefVol;
+		int TimeLastUpdate;
 		
 		public Scenario()
 		{
@@ -19,13 +20,16 @@ namespace Simulateur
 			ListeAeronefVol = new List<CAeronef>();
 			UpdateEtat = new UpdateDelegueEtat(UpdateAeronef);
             UpdateClient = new UpdateDelegueClient(UpdateClients);
+			TimeLastUpdate = 0;
 		}
 
         private void UpdateClients(int TimeSecs)
         {
-            if(TimeSecs == 3600)
+
+            if(TimeSecs-TimeLastUpdate >= 3600)
             {
                 CreerClient();
+				TimeLastUpdate = TimeSecs;
             } 
         }
 

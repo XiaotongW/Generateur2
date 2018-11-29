@@ -36,6 +36,7 @@ namespace Simulateur
 			VSimulateur = new fchSimulateur(this);
 			formRun = new Thread(new ThreadStart(() => Application.Run(VSimulateur)));
 			formRun.Start();
+			m_scenario = new Scenario();
 			Timer.Start();
 		}
 
