@@ -13,6 +13,7 @@ namespace Simulateur
 
 	public delegate void Update();
 	public delegate void TimeDelegue(string timeString);
+    public delegate void rafraichirCarte();
 	public delegate void UpdateDelegueEtat(int TimeSecs);
     public delegate void UpdateDelegueClient(int TimeSecs);
 
@@ -64,6 +65,7 @@ namespace Simulateur
 				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {Timer.ToString()});
 				m_scenario.UpdateEtat(Timer.SecondesEcouler());
 				m_scenario.UpdateClient(Timer.SecondesEcouler());
+                VSimulateur.Invoke(VSimulateur.dessinerCarte);
 			}
 			catch
 			{

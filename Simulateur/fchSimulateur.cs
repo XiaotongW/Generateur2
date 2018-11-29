@@ -16,15 +16,22 @@ namespace Simulateur
 	{
 		CSimulateur simulateur;
 		public TimeDelegue timeDelegue;
+        public rafraichirCarte dessinerCarte;
         bool m_scenarioCharger;
 
 		public fchSimulateur(CSimulateur simulateur)
 		{
 			this.simulateur = simulateur;
 			timeDelegue = new TimeDelegue(setHorloge);
+            dessinerCarte = new rafraichirCarte(rafraichirCarte);
             m_scenarioCharger = false;
 			InitializeComponent();
 		}
+
+        public void rafraichirCarte()
+        {
+            pictureBox1.Refresh();
+        }
 
 		private void setHorloge(string Time)
 		{
