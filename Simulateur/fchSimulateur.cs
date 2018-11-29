@@ -67,9 +67,54 @@ namespace Simulateur
             }
         }
 
-        private void afficherAeroportCarte()
+        private void afficherAeroportCarte(PaintEventArgs e)
         {
+            int nbAeroport;
+            int posX;
+            int posY;
 
+            if (m_scenarioCharger)
+            {
+                nbAeroport = simulateur.scenario.nbAeroport;
+
+                for (int i = 0; i < nbAeroport; i++)
+                {
+                    posX = simulateur.scenario.Aeroports[i].position.x;
+                    posY = simulateur.scenario.Aeroports[i].position.y;
+
+                    Icon iconeAeroport = new Icon("Aeroport.ico");
+
+                    Rectangle rect = new Rectangle(posX + 7, posY + 7, 15, 15);
+
+                    e.Graphics.DrawIcon(iconeAeroport, rect);
+                }
+            }
+        }
+
+        private void afficherLiaison(PaintEventArgs e)
+        {
+            Pen ligne;
+            Color noir;
+            int srcX, srcY, destX, destY;
+
+            noir = Color.FromName("Black");
+            ligne = new Pen(noir, 2);
+
+            if (m_scenarioCharger)
+            {
+                for (int i = 0; i < simulateur.scenario.nbAeroport; i++)
+                {
+                    for (int j = 0; j < simulateur.scenario.nbAeroport; j++)
+                    {
+                        srcX = simulateur.scenario.Aeroports[i].position.x + 14;
+                        srcY = simulateur.scenario.Aeroports[i].position.y + 14;
+                        destX = simulateur.scenario.Aeroports[j].position.x + 14;
+                        destY = simulateur.scenario.Aeroports[j].position.y + 14;
+
+                        e.Graphics.DrawLine(ligne, srcX, srcY, destX, destY);
+                    }
+                }
+            }
         }
 
         private void chargerUnScénarioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,25 +129,8 @@ namespace Simulateur
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            int nbAeroport;
-            int posX;
-            int posY;
-
-            if (m_scenarioCharger)
-            {
-                nbAeroport = simulateur.scenario.nbAeroport;
-
-                for (int i = 0; i < nbAeroport; i++)
-                {
-                    posX = simulateur.scenario.Aeroports[i].position.x;
-                    posY = simulateur.scenario.Aeroports[i].position.y;
-                    Icon iconeAeroport = new Icon("Aeroport.ico");
-
-                    Rectangle rect = new Rectangle(posX + 7, posY + 7, 15, 15);
-
-                    e.Graphics.DrawIcon(iconeAeroport, rect);
-                }
-            }
+            afficherAeroportCarte(e);
+            afficherLiaison(e);
         }
     }
 }
