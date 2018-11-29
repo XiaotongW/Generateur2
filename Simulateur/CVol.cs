@@ -30,6 +30,11 @@ namespace Simulateur
 			get { return m_posArriver; }
 		}
 
+		public Position Depart
+		{
+			get { return m_posDepart; }
+		}
+
 		public bool Fini
 		{
 			get { return m_posActuelle == m_posArriver; }
