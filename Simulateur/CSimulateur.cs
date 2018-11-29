@@ -12,11 +12,9 @@ namespace Simulateur
 {
 	public delegate void TimeDelegue(string timeString);
 	public delegate void UpdateDelegueEtat(int TimeSecs);
-<<<<<<< HEAD
 	public delegate void Update();
-=======
     public delegate void UpdateDelegueClient(int TimeSecs);
->>>>>>> ddbe0b25dd192c286e07e80aeabcf4a0e842716b
+
 	public class CSimulateur
 	{
 		[STAThread]
@@ -28,7 +26,6 @@ namespace Simulateur
 		CHorloge Timer;
 		fchSimulateur VSimulateur;
 		Scenario m_scenario;
-		//TimeDelegue UpdateTime;
 		Update updateDelegue;
 		Thread formRun;
 
@@ -66,7 +63,7 @@ namespace Simulateur
 				if (m_scenario != null)
 					m_scenario.UpdateEtat(Timer.SecondesEcouler());
 
-                //m_scenario.UpdateClient(Timer.SecondesEcouler());
+                m_scenario.UpdateClient(Timer.SecondesEcouler());
 			}
 			catch
 			{
