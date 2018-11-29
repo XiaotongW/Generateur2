@@ -65,7 +65,7 @@ namespace Simulateur
 				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {Timer.ToString()});
 				m_scenario.UpdateEtat(Timer.SecondesEcouler());
 				m_scenario.UpdateClient(Timer.SecondesEcouler());
-                VSimulateur.Invoke(VSimulateur.dessinerCarte);
+                //VSimulateur.Invoke(VSimulateur.dessinerCarte);
 			}
 			catch
 			{

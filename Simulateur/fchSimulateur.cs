@@ -66,11 +66,56 @@ namespace Simulateur
         //Charger le nom des aeroports dans la liste
         {
             int nbAeroport;
+            string nomAeroport;
+            string villeAeroport;
             nbAeroport = simulateur.scenario.nbAeroport;
 
             for (int i = 0; i < nbAeroport; i++)
             {
-                lstAeroport.Items.Add(simulateur.scenario.Aeroports[i].nom);
+                nomAeroport = simulateur.scenario.Aeroports[i].nom;
+                villeAeroport = simulateur.scenario.Aeroports[i].ville;
+
+                if (nomAeroport == villeAeroport)
+                {
+                    lstAeroport.Items.Add("Aéroport de " + villeAeroport);
+                }
+                else
+                {
+                    lstAeroport.Items.Add("Aéroport " + nomAeroport + " de " + villeAeroport);
+                }
+            }
+        }
+
+        private void afficherListeAeronef()
+        {
+            int codeAeroport;
+            int nbAeronef;
+
+            codeAeroport = lstAeroport.SelectedIndex;
+            lstAeronef.Items.Clear();
+
+            if (codeAeroport != -1)
+            {
+                nbAeronef = simulateur.scenario.Aeroports[codeAeroport].nbAeronef;
+
+                for (int i = 0; i < nbAeronef; i++)
+                {
+                    lstAeronef.Items.Add(simulateur.scenario.Aeroports[codeAeroport][i].nom);
+                }
+            }
+        }
+
+        private void afficherListeClient()
+        {
+            int codeAeroport;
+            int nbClient;
+
+            codeAeroport = lstAeroport.SelectedIndex;
+            lstClient.Items.Clear();
+
+            if (codeAeroport != -1)
+            {
+                //nbClient = simulateur.scenario[codeAeroport].
             }
         }
 
@@ -180,6 +225,16 @@ namespace Simulateur
             afficherAeronef(e);
             afficherLiaison(e);
             afficherAeroportCarte(e);   
+        }
+
+        private void lstAeroport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            afficherListeAeronef();
+        }
+
+        private void lstAeroport_Click(object sender, EventArgs e)
+        {
+            afficherListeAeronef();
         }
     }
 }
