@@ -8,9 +8,10 @@ namespace Simulateur
 {
 	class CInactif:Etat
 	{
-		public CInactif(EtatAeronef etat):base(etat)
-		{
 
+		public CInactif():base(EtatAeronef.Inactif)
+		{
+			
 		}
 	}
 }

@@ -8,12 +8,15 @@ namespace Simulateur
 {
 	public class Scenario
 	{
-
+		public UpdateDelegueEtat UpdateEtat;
 		List<CAeroport> ListeAeroports;
-
+		List<CAeronef> ListeAeronefVol;
+		
 		public Scenario()
 		{
 			ListeAeroports = new List<CAeroport>();
+			ListeAeronefVol = new List<CAeronef>();
+			UpdateEtat = new UpdateDelegueEtat(UpdateAeronef);
 		}
 
 		public int nbAeroport
@@ -63,6 +66,7 @@ namespace Simulateur
             Random rand = new Random(DateTime.Now.Millisecond);
             int x = rand.Next(0, Resource.carte_du_monde.Width);
             int y = rand.Next(0, Resource.carte_du_monde.Height);
+			return null;
         }
 
         //Creer un lot de voyageur pour un aeroport
@@ -84,6 +88,46 @@ namespace Simulateur
             UsineClient usineClient = new UsineClient();
             return usineClient.creeClient(PrendreAeroportRand(SelfAero), quantite);
         }
+
+		private void UpdateAeronef(int TimeSecs)
+		{
+			EnvoyerAeronefVol();
+			RetirerAeronefVol(TimeSecs);
+		}
+
+		private void EnvoyerAeronefVol()
+		{
+			foreach (CAeroport aeroport in ListeAeroports)
+			{
+				for (int i = 0; i < aeroport.nbAeronef; i++)
+				{
+					if (aeroport[i].etat.Status == EtatAeronef.Vol)
+					{
+						ListeAeronefVol.Add(aeroport[i]);
+						aeroport.RetierAeronef(aeroport[i]);
+					}
+				}
+			}
+		}
+
+		private void RetirerAeronefVol(int TimerSecs)
+		{
+			List<CAeronef> AeronefARetier =
+				ListeAeronefVol.FindAll(aeronef => (aeronef.etat as CVol).Fini);
+			int aeroportIndex;
+			foreach (CAeronef aeronefVol in AeronefARetier)
+			{
+				aeroportIndex = ListeAeroports.FindIndex(Aaeroport => Aaeroport.position.Equals((aeronefVol.etat as CVol).Actuelle));
+				if (aeroportIndex != -1)
+				{
+					if (aeronefVol.changerEtat(TimerSecs) != EtatAeronef.Vol)
+					{
+						AjouterAeronef(ListeAeroports[aeroportIndex], aeronefVol);
+						ListeAeronefVol.Remove(aeronefVol);
+					}
+				}
+			}
+		}
 
         //Prend un aeroport random comme destination
         private CAeroport PrendreAeroportRand(CAeroport SelfAero)

@@ -33,6 +33,7 @@ namespace Simulateur
 			this.MaxCargo = MaxCargo;
 			m_position = new Position(posX, posY); 
 			Aeronefs = new List<CAeronef>();
+			Clients = new List<CClients>();
 		}
 		public string nom
 		{
@@ -66,6 +67,12 @@ namespace Simulateur
 			get { return MaxCargo; }
 			set { MaxCargo = value; }
 		}
+
+		public int nbAeronef
+		{
+			get { return Aeronefs.Count(); }
+		}
+
 		public CAeronef this[int i]
 		{
 			get { return Aeronefs.ElementAt(i); }
@@ -76,7 +83,13 @@ namespace Simulateur
 			get { return m_position; }
 			set { m_position = value; }
 		}
-        public void AjouterClient(CClients Client)
+
+		public override string ToString()
+		{
+			return string.Format("{0} ({1}), Min Passager : {2}, Max Passager : {3}, Min Marchandise : {4}, Max Marchandise : {5}", new object[] { nom, position.ConvertirPosition(), this.MinPassager, this.MaxPassager, this.MinCargo, this.MaxCargo });
+		}
+
+		public void AjouterClient(CClients Client)
         {
             Clients.Add(Client);
         }
@@ -95,9 +108,78 @@ namespace Simulateur
 			Aeronefs.RemoveAt(Aeronefs.FindIndex(e => e == Aeronef));
 		}
 
-		public override string ToString()
+		public void assignerClients(int TimerDebut)
 		{
-			return string.Format("{0} ({1}), Min Passager : {2}, Max Passager : {3}, Min Marchandise : {4}, Max Marchandise : {5}", new object[] {nom, position.ConvertirPosition(),this.MinPassager,this.MaxPassager,this.MinCargo,this.MaxCargo }); 
+			CAeronef aeronef;
+			foreach (CClients client in Clients)
+			{
+				switch (client.TypeClient)
+				{
+					case typeClient.Voyageur:
+						aeronef=ChoisirAeronef(client as CVoyageur);
+						aeronef.changerEtat(new CEmbarquement(TimerDebut, (aeronef as CTransport).embarquement, (client as CVoyageur).clients),TimerDebut);
+						break;
+					case typeClient.Cargaison:
+						aeronef=ChoisirAeronef(client as CCargaison);
+						aeronef.changerEtat(new CEmbarquement(TimerDebut,(aeronef as CTransport).embarquement,(int)(client as CCargaison).poid),TimerDebut);
+						break;
+					case typeClient.Incendie:
+					case typeClient.Detresse:
+					case typeClient.Point:
+						aeronef=ChoisirAeronef(client.TypeClient);
+						aeronef.changerEtat(new CVol(EtatAeronef.Inactif, position, (client as CSurCarte).position),TimerDebut);
+						break;
+				}
+			}
+		}
+		private CAeronef ChoisirAeronef(CVoyageur client) {
+			List<CAeronef> aPassager =
+				Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.GetType()== typeof(CPassager)));
+
+			if (aPassager.Count <= 0) return null;
+
+			aPassager.Sort((x, y) => x.capacite.CompareTo(y.capacite));
+			CAeronef aeronef = aPassager.ElementAt(aPassager.Count - 1);
+			for (int i = aPassager.Count() - 2; i >= 0 && aeronef.capacite > client.clients; i--)
+				aeronef = (aPassager.ElementAt(i).capacite >= client.clients) ? aPassager.ElementAt(i) : aeronef;
+			return aeronef;
+		}
+
+		private CAeronef ChoisirAeronef(CCargaison client)
+		{
+			List<CAeronef> aCargo =
+			Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.GetType() == typeof(CCargo)));
+
+			if (aCargo.Count <= 0) return null;
+
+			aCargo.Sort((x, y) => x.capacite.CompareTo(y.capacite));
+			CAeronef aeronef = aCargo.ElementAt(aCargo.Count - 1);
+			for (int i = aCargo.Count() - 2; i >= 0 && aeronef.capacite > client.poid; i--)
+				aeronef = (aCargo.ElementAt(i).capacite >= client.poid) ? aCargo.ElementAt(i) : aeronef;
+			return aeronef;
+		}
+
+		private CAeronef ChoisirAeronef(typeClient clientType)
+		{
+			Type aeronefType=null;
+			switch (clientType)
+			{
+				case typeClient.Incendie:
+					aeronefType = typeof(CCiterne);
+					break;
+				case typeClient.Detresse:
+					aeronefType = typeof(CSecours);
+					break;
+				case typeClient.Point:
+					aeronefType = typeof(CLoisir);
+					break;
+				default:
+					return null;
+			}
+			List<CAeronef> vehicules =
+				Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.GetType() == aeronefType));
+			if (vehicules.Count() <= 0) return null;
+			return vehicules.ElementAt(vehicules.Count - 1);
 		}
 	}
 }
