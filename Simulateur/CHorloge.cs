@@ -12,27 +12,27 @@ namespace Simulateur
 		Timer m_Timer;
 		int m_TimeSpeed, m_Step;
 		int Heures, Minutes, Secondes;
-		TimeDelegue UpdateDelegue;
+		Update UpdateDelegue;
 
-		public CHorloge(int speed, TimeDelegue timeDelegue, int Step)
+		public CHorloge(int speed, Update Delegue, int Step)
 		{
 			m_TimeSpeed = speed;
 			m_Step = Step;
-			UpdateDelegue = timeDelegue;
+			UpdateDelegue = Delegue;
 			ResetTimer();
 		}
 
-		public CHorloge(TimeDelegue timeDelegue) : this (1, timeDelegue, 1)
+		public CHorloge(Update Delegue) : this (1, Delegue, 1)
 		{
 
 		}
 
-		public CHorloge(int speed,TimeDelegue timeDelegue) :this(speed,timeDelegue,1)
+		public CHorloge(int speed, Update Delegue) :this(speed, Delegue, 1)
 		{
 
 		}
 
-		public CHorloge(TimeDelegue timeDelegue, int Step):this(1,timeDelegue,Step)
+		public CHorloge(Update Delegue, int Step):this(1, Delegue, Step)
 		{
 
 		}
@@ -96,7 +96,7 @@ namespace Simulateur
 				Heures += (Minutes - Minutes % 60) / 60;
 				Minutes = Minutes % 60;
 			}
-			UpdateDelegue(ToString());
+			UpdateDelegue();
 		}
 	}
 }
