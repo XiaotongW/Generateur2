@@ -115,7 +115,12 @@ namespace Simulateur
 
             if (codeAeroport != -1)
             {
-                //nbClient = simulateur.scenario[codeAeroport].
+                nbClient = simulateur.scenario[codeAeroport].nbClient;
+
+                for (int i = 0; i < nbClient; i++)
+                {
+                    lstClient.Items.Add(simulateur.scenario.Aeroports[codeAeroport].recevoirClient(i).ToString());
+                }
             }
         }
 
@@ -230,11 +235,13 @@ namespace Simulateur
         private void lstAeroport_SelectedIndexChanged(object sender, EventArgs e)
         {
             afficherListeAeronef();
+            afficherListeClient();
         }
 
         private void lstAeroport_Click(object sender, EventArgs e)
         {
             afficherListeAeronef();
+            afficherListeClient();
         }
     }
 }
