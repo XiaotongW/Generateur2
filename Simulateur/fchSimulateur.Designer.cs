@@ -31,7 +31,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupAeroport = new System.Windows.Forms.GroupBox();
-            this.lstAeroport = new System.Windows.Forms.DataGridView();
             this.groupClient = new System.Windows.Forms.GroupBox();
             this.lstClient = new System.Windows.Forms.DataGridView();
             this.groupAvions = new System.Windows.Forms.GroupBox();
@@ -42,9 +41,9 @@
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chargerUnScénarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lstAeroport = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupAeroport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).BeginInit();
             this.groupClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstClient)).BeginInit();
             this.groupAvions.SuspendLayout();
@@ -60,6 +59,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(998, 533);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // groupAeroport
             // 
@@ -70,14 +70,6 @@
             this.groupAeroport.TabIndex = 1;
             this.groupAeroport.TabStop = false;
             this.groupAeroport.Text = "Aéroport";
-            // 
-            // lstAeroport
-            // 
-            this.lstAeroport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstAeroport.Location = new System.Drawing.Point(6, 19);
-            this.lstAeroport.Name = "lstAeroport";
-            this.lstAeroport.Size = new System.Drawing.Size(204, 112);
-            this.lstAeroport.TabIndex = 0;
             // 
             // groupClient
             // 
@@ -168,6 +160,14 @@
             this.quitterToolStripMenuItem.Text = "Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
+            // lstAeroport
+            // 
+            this.lstAeroport.FormattingEnabled = true;
+            this.lstAeroport.Location = new System.Drawing.Point(6, 19);
+            this.lstAeroport.Name = "lstAeroport";
+            this.lstAeroport.Size = new System.Drawing.Size(204, 108);
+            this.lstAeroport.TabIndex = 0;
+            // 
             // fchSimulateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,7 +185,6 @@
             this.Text = " ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupAeroport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstAeroport)).EndInit();
             this.groupClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstClient)).EndInit();
             this.groupAvions.ResumeLayout(false);
@@ -202,7 +201,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupAeroport;
-        private System.Windows.Forms.DataGridView lstAeroport;
         private System.Windows.Forms.GroupBox groupClient;
         private System.Windows.Forms.DataGridView lstClient;
         private System.Windows.Forms.GroupBox groupAvions;
@@ -213,6 +211,7 @@
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chargerUnScénarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
+        private System.Windows.Forms.ListBox lstAeroport;
     }
 }
 

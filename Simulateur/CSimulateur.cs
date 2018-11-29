@@ -24,6 +24,7 @@ namespace Simulateur
 		Scenario m_scenario;
 		TimeDelegue UpdateTime;
 		Thread formRun;
+
 		public CSimulateur()
 		{
 			UpdateTime = new TimeDelegue(UpdateHorloge);
