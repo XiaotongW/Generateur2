@@ -23,6 +23,7 @@ namespace Simulateur
 
 		public override Etat ChangerEtat(CAeronef aeronef)
 		{
+			MaintenanceFini = FinMaintenance <= aeronef.DebutEtat;
 			return Fini ? new CInactif():base.ChangerEtat(aeronef);
 		}
 	}

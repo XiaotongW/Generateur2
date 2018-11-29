@@ -44,12 +44,17 @@ namespace Simulateur
 		{
 			if (!Fini)
 			{
-				int TimeDiff = TimerSecs - aeronef.DebutEtat;
-				//if (TimeDiff >= 3600)
-				//{
-				//	double DistanceParcouru = aeronef.vitesse * (TimeDiff / 3600);
-				//	double t = (TimeDiff / 3600) / 1+(Math.Abs((m_posArriver.x + m_posArriver.y) + (m_posActuelle.x - m_posActuelle.y) / aeronef.vitesse));
-				//}
+				double TimeDiff = (TimerSecs - aeronef.DebutEtat)/3600.0;
+				if (TimeDiff >= 1)
+				{
+					double a = (double)(m_posArriver.y - m_posActuelle.y) / (double)(m_posArriver.x - m_posActuelle.x);
+					double x = (m_posActuelle.x + aeronef.vitesse * TimeDiff);
+					double b = (a * (double)m_posActuelle.x - m_posActuelle.y)*-1;
+					double y = a * x + b;
+						
+					m_posActuelle.x = (int)x;
+					m_posActuelle.y = (int)y;
+				}
 
 			}
 			if (m_prevEtat == EtatAeronef.Embarquement)
