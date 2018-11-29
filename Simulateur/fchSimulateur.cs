@@ -129,8 +129,8 @@ namespace Simulateur
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            afficherAeroportCarte(e);
             afficherLiaison(e);
+            afficherAeroportCarte(e);   
         }
     }
 }
