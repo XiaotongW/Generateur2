@@ -52,17 +52,26 @@
     <Compile Include="CCiterne.cs" />
     <Compile Include="CClients.cs" />
     <Compile Include="CDansAeroport.cs" />
+    <Compile Include="CDebarquement.cs" />
     <Compile Include="CDetresse.cs" />
+    <Compile Include="CEmbarquement.cs" />
     <Compile Include="CHorloge.cs" />
+    <Compile Include="CInactif.cs" />
     <Compile Include="CIncendie.cs" />
+    <Compile Include="CLargage.cs" />
     <Compile Include="CLoisir.cs" />
+    <Compile Include="CMaintenance.cs" />
+    <Compile Include="CObservation.cs" />
     <Compile Include="CPassager.cs" />
     <Compile Include="CPoint.cs" />
+    <Compile Include="CSauvetage.cs" />
     <Compile Include="CSecours.cs" />
     <Compile Include="CSimulateur.cs" />
     <Compile Include="CSurCarte.cs" />
     <Compile Include="CTransport.cs" />
+    <Compile Include="CVol.cs" />
     <Compile Include="CVoyageur.cs" />
+    <Compile Include="Etat.cs" />
     <Compile Include="fchSimulateur.cs">
       <SubType>Form</SubType>
     </Compile>

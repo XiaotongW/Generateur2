@@ -66,12 +66,8 @@ namespace Simulateur
             Random rand = new Random(DateTime.Now.Millisecond);
             int x = rand.Next(0, Resource.carte_du_monde.Width);
             int y = rand.Next(0, Resource.carte_du_monde.Height);
-<<<<<<< HEAD
 			return null;
-        }
-=======
         }*/
->>>>>>> 13a54c66758bf7cd7276e8ddb21b6dfee6afe4bf
 
         //Creer un lot de voyageur pour un aeroport
         private CClients CreerVoyageur(int min,int max,CAeroport SelfAero)
