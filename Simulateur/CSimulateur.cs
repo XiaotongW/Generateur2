@@ -10,9 +10,10 @@ using System.IO;
 
 namespace Simulateur
 {
+
+	public delegate void Update();
 	public delegate void TimeDelegue(string timeString);
 	public delegate void UpdateDelegueEtat(int TimeSecs);
-	public delegate void Update();
     public delegate void UpdateDelegueClient(int TimeSecs);
 
 	public class CSimulateur
@@ -61,8 +62,8 @@ namespace Simulateur
 			try
 			{
 				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {Timer.ToString()});
-				//m_scenario.UpdateEtat(Timer.SecondesEcouler());
-               //m_scenario.UpdateClient(Timer.SecondesEcouler());
+				m_scenario.UpdateEtat(Timer.SecondesEcouler());
+				m_scenario.UpdateClient(Timer.SecondesEcouler());
 			}
 			catch
 			{

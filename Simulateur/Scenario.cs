@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Simulateur
 {
 	public class Scenario
 	{
-		//public UpdateDelegueEtat UpdateEtat;
-  //      public UpdateDelegueClient UpdateClient;
+		[XmlIgnore]
+		public UpdateDelegueEtat UpdateEtat;
+		[XmlIgnore]
+		public UpdateDelegueClient UpdateClient;
 		List<CAeroport> ListeAeroports;
 		List<CAeronef> ListeAeronefVol;
 		int TimeLastUpdate;
@@ -18,8 +21,8 @@ namespace Simulateur
 		{
 			ListeAeroports = new List<CAeroport>();
 			ListeAeronefVol = new List<CAeronef>();
-			//UpdateEtat = new UpdateDelegueEtat(UpdateAeronef);
-   //         UpdateClient = new UpdateDelegueClient(UpdateClients);
+			UpdateEtat = new UpdateDelegueEtat(UpdateAeronef);
+			UpdateClient = new UpdateDelegueClient(UpdateClients);
 			TimeLastUpdate = 0;
 		}
 
