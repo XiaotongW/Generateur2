@@ -8,8 +8,8 @@ namespace Simulateur
 {
 	public class Scenario
 	{
-		public UpdateDelegueEtat UpdateEtat;
-        public UpdateDelegueClient UpdateClient;
+		//public UpdateDelegueEtat UpdateEtat;
+  //      public UpdateDelegueClient UpdateClient;
 		List<CAeroport> ListeAeroports;
 		List<CAeronef> ListeAeronefVol;
 		int TimeLastUpdate;
@@ -18,8 +18,8 @@ namespace Simulateur
 		{
 			ListeAeroports = new List<CAeroport>();
 			ListeAeronefVol = new List<CAeronef>();
-			UpdateEtat = new UpdateDelegueEtat(UpdateAeronef);
-            UpdateClient = new UpdateDelegueClient(UpdateClients);
+			//UpdateEtat = new UpdateDelegueEtat(UpdateAeronef);
+   //         UpdateClient = new UpdateDelegueClient(UpdateClients);
 			TimeLastUpdate = 0;
 		}
 
@@ -36,6 +36,11 @@ namespace Simulateur
 		public int nbAeroport
 		{
 			get { return ListeAeroports.Count; }
+		}
+
+		public int nbAeronefVol
+		{
+			get { return ListeAeronefVol.Count(); }
 		}
 
 		public CAeroport[] Aeroports

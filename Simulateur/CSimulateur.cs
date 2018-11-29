@@ -61,10 +61,8 @@ namespace Simulateur
 			try
 			{
 				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {Timer.ToString()});
-				if (m_scenario != null)
-					m_scenario.UpdateEtat(Timer.SecondesEcouler());
-
-                m_scenario.UpdateClient(Timer.SecondesEcouler());
+				//m_scenario.UpdateEtat(Timer.SecondesEcouler());
+               //m_scenario.UpdateClient(Timer.SecondesEcouler());
 			}
 			catch
 			{
