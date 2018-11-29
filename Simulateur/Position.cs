@@ -12,6 +12,10 @@ namespace Simulateur
         int Y;
         private char Xcardinalite;
         private char Ycardinalite;
+        public Position()
+        {
+
+        }
         public Position(int p_X, int p_Y)
         {
             X = p_X;
