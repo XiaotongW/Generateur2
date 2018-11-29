@@ -38,7 +38,6 @@ namespace Simulateur
 			formRun = new Thread(new ThreadStart(() => Application.Run(VSimulateur)));
 			formRun.Start();
 			m_scenario = new Scenario();
-			Timer.Start();
 		}
 
 		public Scenario scenario
@@ -53,6 +52,7 @@ namespace Simulateur
 			using (StreamReader sr = new StreamReader(LeScenario))
 			{
 				scenario = xs.Deserialize(sr) as Scenario;
+				Timer.ResetTimer().Start();
 			}
 		}
 
