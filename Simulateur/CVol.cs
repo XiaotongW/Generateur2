@@ -10,11 +10,13 @@ namespace Simulateur
 	{
 		protected Position m_posActuelle;
 		protected Position m_posArriver;
+		protected Position m_posDepart;
 		EtatAeronef m_prevEtat;	
 		public CVol(EtatAeronef dernierEtat, Position posActuelle, Position posArriver):base(EtatAeronef.Vol)
 		{
 			m_posActuelle = posActuelle;
 			m_posArriver = posArriver;
+			m_posDepart = posActuelle;
 			m_prevEtat = dernierEtat;
 		}
 
