@@ -28,7 +28,7 @@ namespace Generateur
 		public override string ToString()
 		{
 			return string.Format(
-				"{0} {1} (Cargot), Capacité : {2}, Vitesse : {3}, Temps embarquement : {4}, débarquement : {5}, entretient {6}",
+				"{0} {1} (Cargo), Capacité : {2}, Vitesse : {3}, Temps embarquement : {4}, débarquement : {5}, entretient {6}",
 				new object[] { this.Nom, this.QteCargo, this.Capacite, this.vitesse, this.embarquement, this.debarquement, this.entretient }
 			);
 		}

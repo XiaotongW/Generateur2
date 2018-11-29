@@ -112,7 +112,16 @@ namespace Generateur
 
 		public override string ToString()
 		{
-			return string.Format("{0} ({1}), Min Passager : {2}, Max Passager : {3}, Min Marchandise : {4}, Max Marchandise : {5}", new object[] {nom, position.ConvertirPosition(),this.MinPassager,this.MaxPassager,this.MinCargo,this.MaxCargo }); 
-		}
+            if (nom == ville)
+            {
+                return string.Format("Aéroport de {0} ({1}), Min Passager : {2}, Max Passager : {3}, Min Marchandise : {4}, Max Marchandise : {5}", new object[] { ville, position.ConvertirPosition(), this.MinPassager, this.MaxPassager, this.MinCargo, this.MaxCargo });
+
+            }
+            else
+            {
+                return string.Format("Aéroport {0} de {1} ({2}), Min Passager : {3}, Max Passager : {4}, Min Marchandise : {5}, Max Marchandise : {6}", new object[] { nom, ville, position.ConvertirPosition(), this.MinPassager, this.MaxPassager, this.MinCargo, this.MaxCargo });
+
+            }
+        }
 	}
 }

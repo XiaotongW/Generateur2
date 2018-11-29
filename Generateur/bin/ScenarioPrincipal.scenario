@@ -113,7 +113,7 @@
           <entretient>2</entretient>
           <capacite>1</capacite>
         </CAeronef>
-        <CAeronef xsi:type="CLoisir">
+        <CAeronef xsi:type="CCiterne">
           <nom>Canadair CL-215</nom>
           <vitesse>2</vitesse>
           <entretient>3</entretient>
