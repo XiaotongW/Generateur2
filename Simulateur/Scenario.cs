@@ -83,24 +83,24 @@ namespace Simulateur
         {
             foreach (CAeroport Aero in ListeAeroports)
             {
-                Aero.AjouterClient(CreerVoyageur(Aero.Passager_Min, Aero.Passager_Max, Aero));
-                Aero.AjouterClient(CreerCargaison(Aero.Passager_Min, Aero.Passager_Max, Aero));
+				//Aero.AjouterClient(CreerVoyageur(Aero.Passager_Min, Aero.Passager_Max, Aero));
+				//Aero.AjouterClient(CreerCargaison(Aero.Passager_Min, Aero.Passager_Max, Aero));
             }
 
-            Random rand = new Random(DateTime.Now.Millisecond);
-            int ind = rand.Next(1, 3);//Indice pour creer le nombre de point de detresse
-            for (int i = ind; i <= 3; i++)
-            {
-                CreerPointDetresse();
-            }
+			Random rand = new Random(DateTime.Now.Millisecond);
+			int ind = rand.Next(1, 3);//Indice pour creer le nombre de point de detresse
+			for (int i = ind; i <= 3; i++)
+			{
+				CreerPointDetresse();
+			}
 
-            ind = rand.Next(1, 2);//Indice pour creer le nombre de point d'incendie
-            for (int i = ind; i <= 3; i++)
-            {
-                CreerSurCarte(typeClient.Incendie);
-            }
-            CreerSurCarte(typeClient.Point);
-        }
+			ind = rand.Next(1, 2);//Indice pour creer le nombre de point d'incendie
+			for (int i = ind; i <= 3; i++)
+			{
+				CreerSurCarte(typeClient.Incendie);
+			}
+			CreerSurCarte(typeClient.Point);
+		}
 
         //Creer un point de detresse
         private void CreerPointDetresse()

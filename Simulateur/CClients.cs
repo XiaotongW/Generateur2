@@ -9,7 +9,7 @@ namespace Simulateur
 	public enum typeClient {Voyageur,Cargaison,Point,Incendie,Detresse};
 	public abstract class CClients
 	{
-		protected typeClient m_client;
+		private typeClient m_client;
 		public CClients(typeClient client)
 		{
 			m_client = client;
@@ -18,7 +18,6 @@ namespace Simulateur
 		public typeClient TypeClient
 		{
 			get { return m_client; }
-			private set { m_client = value; }
 		}
 	}
 }
