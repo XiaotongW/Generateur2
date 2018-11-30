@@ -13,6 +13,7 @@ namespace Simulateur
 
 	public delegate void Update();
 	public delegate void TimeDelegue(string timeString);
+    public delegate void rafraichirCarte();
 	public delegate void UpdateDelegueEtat(int TimeSecs);
     public delegate void UpdateDelegueClient(int TimeSecs);
 
@@ -66,6 +67,7 @@ namespace Simulateur
 			try
 			{
 				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {Timer.ToString()});
+<<<<<<< HEAD
 				if (UpdateAeronef == null || UpdateAeronef.ThreadState != ThreadState.Running)
 				{
 					UpdateAeronef = new Thread(() => UpdateCLientAeronef());
@@ -73,6 +75,11 @@ namespace Simulateur
 				}
 					
 
+=======
+				m_scenario.UpdateEtat(Timer.SecondesEcouler());
+				m_scenario.UpdateClient(Timer.SecondesEcouler());
+                //VSimulateur.Invoke(VSimulateur.dessinerCarte);
+>>>>>>> 507989b6f0acca468f0ddcca95c535a52ecef939
 			}
 			catch
 			{

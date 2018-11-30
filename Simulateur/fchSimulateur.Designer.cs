@@ -31,23 +31,21 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupAeroport = new System.Windows.Forms.GroupBox();
+            this.lstAeroport = new System.Windows.Forms.ListBox();
             this.groupClient = new System.Windows.Forms.GroupBox();
-            this.lstClient = new System.Windows.Forms.DataGridView();
             this.groupAvions = new System.Windows.Forms.GroupBox();
-            this.lstAvion = new System.Windows.Forms.DataGridView();
             this.cmdPause = new System.Windows.Forms.Button();
             this.lblHorloge = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chargerUnScénarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lstAeroport = new System.Windows.Forms.ListBox();
+            this.lstClient = new System.Windows.Forms.ListBox();
+            this.lstAeronef = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupAeroport.SuspendLayout();
             this.groupClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstClient)).BeginInit();
             this.groupAvions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstAvion)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,46 +64,40 @@
             this.groupAeroport.Controls.Add(this.lstAeroport);
             this.groupAeroport.Location = new System.Drawing.Point(22, 64);
             this.groupAeroport.Name = "groupAeroport";
-            this.groupAeroport.Size = new System.Drawing.Size(216, 137);
+            this.groupAeroport.Size = new System.Drawing.Size(268, 158);
             this.groupAeroport.TabIndex = 1;
             this.groupAeroport.TabStop = false;
             this.groupAeroport.Text = "Aéroport";
+            // 
+            // lstAeroport
+            // 
+            this.lstAeroport.FormattingEnabled = true;
+            this.lstAeroport.Location = new System.Drawing.Point(6, 19);
+            this.lstAeroport.Name = "lstAeroport";
+            this.lstAeroport.Size = new System.Drawing.Size(256, 134);
+            this.lstAeroport.TabIndex = 0;
+            this.lstAeroport.Click += new System.EventHandler(this.lstAeroport_Click);
+            this.lstAeroport.SelectedIndexChanged += new System.EventHandler(this.lstAeroport_SelectedIndexChanged);
             // 
             // groupClient
             // 
             this.groupClient.Controls.Add(this.lstClient);
             this.groupClient.Location = new System.Drawing.Point(296, 64);
             this.groupClient.Name = "groupClient";
-            this.groupClient.Size = new System.Drawing.Size(312, 137);
+            this.groupClient.Size = new System.Drawing.Size(353, 158);
             this.groupClient.TabIndex = 2;
             this.groupClient.TabStop = false;
             this.groupClient.Text = "Clients";
             // 
-            // lstClient
-            // 
-            this.lstClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstClient.Location = new System.Drawing.Point(6, 19);
-            this.lstClient.Name = "lstClient";
-            this.lstClient.Size = new System.Drawing.Size(300, 112);
-            this.lstClient.TabIndex = 1;
-            // 
             // groupAvions
             // 
-            this.groupAvions.Controls.Add(this.lstAvion);
+            this.groupAvions.Controls.Add(this.lstAeronef);
             this.groupAvions.Location = new System.Drawing.Point(655, 64);
             this.groupAvions.Name = "groupAvions";
-            this.groupAvions.Size = new System.Drawing.Size(365, 137);
+            this.groupAvions.Size = new System.Drawing.Size(365, 158);
             this.groupAvions.TabIndex = 3;
             this.groupAvions.TabStop = false;
             this.groupAvions.Text = "Avions";
-            // 
-            // lstAvion
-            // 
-            this.lstAvion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lstAvion.Location = new System.Drawing.Point(6, 19);
-            this.lstAvion.Name = "lstAvion";
-            this.lstAvion.Size = new System.Drawing.Size(353, 112);
-            this.lstAvion.TabIndex = 2;
             // 
             // cmdPause
             // 
@@ -160,13 +152,21 @@
             this.quitterToolStripMenuItem.Text = "Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
-            // lstAeroport
+            // lstClient
             // 
-            this.lstAeroport.FormattingEnabled = true;
-            this.lstAeroport.Location = new System.Drawing.Point(6, 19);
-            this.lstAeroport.Name = "lstAeroport";
-            this.lstAeroport.Size = new System.Drawing.Size(204, 108);
-            this.lstAeroport.TabIndex = 0;
+            this.lstClient.FormattingEnabled = true;
+            this.lstClient.Location = new System.Drawing.Point(6, 19);
+            this.lstClient.Name = "lstClient";
+            this.lstClient.Size = new System.Drawing.Size(341, 134);
+            this.lstClient.TabIndex = 0;
+            // 
+            // lstAeronef
+            // 
+            this.lstAeronef.FormattingEnabled = true;
+            this.lstAeronef.Location = new System.Drawing.Point(6, 19);
+            this.lstAeronef.Name = "lstAeronef";
+            this.lstAeronef.Size = new System.Drawing.Size(353, 134);
+            this.lstAeronef.TabIndex = 0;
             // 
             // fchSimulateur
             // 
@@ -186,9 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupAeroport.ResumeLayout(false);
             this.groupClient.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstClient)).EndInit();
             this.groupAvions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstAvion)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -202,9 +200,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupAeroport;
         private System.Windows.Forms.GroupBox groupClient;
-        private System.Windows.Forms.DataGridView lstClient;
         private System.Windows.Forms.GroupBox groupAvions;
-        private System.Windows.Forms.DataGridView lstAvion;
         private System.Windows.Forms.Button cmdPause;
         private System.Windows.Forms.Label lblHorloge;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -212,6 +208,8 @@
         private System.Windows.Forms.ToolStripMenuItem chargerUnScénarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
         private System.Windows.Forms.ListBox lstAeroport;
+        private System.Windows.Forms.ListBox lstClient;
+        private System.Windows.Forms.ListBox lstAeronef;
     }
 }
 

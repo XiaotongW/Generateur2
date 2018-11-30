@@ -73,6 +73,11 @@ namespace Simulateur
 			get { return Aeronefs.Count(); }
 		}
 
+        public int nbClient
+        {
+            get { return Clients.Count(); }
+        }
+
 		public CAeronef this[int i]
 		{
 			get { return Aeronefs.ElementAt(i); }
@@ -88,6 +93,18 @@ namespace Simulateur
 		{
 			return string.Format("{0} ({1}), Min Passager : {2}, Max Passager : {3}, Min Marchandise : {4}, Max Marchandise : {5}", new object[] { nom, position.ConvertirPosition(), this.MinPassager, this.MaxPassager, this.MinCargo, this.MaxCargo });
 		}
+
+        public CClients recevoirClient(int i)
+        {
+            if (Clients.Count() > 0)
+            {
+                return Clients.ElementAt(i);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
 		public void AjouterClient(CClients Client)
         {
