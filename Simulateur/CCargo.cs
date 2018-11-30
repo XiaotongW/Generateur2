@@ -12,11 +12,14 @@ namespace Simulateur
 		private int qteCargo;
 		public CCargo()
 		{
-
+			m_etat = new CInactif();
+			type = typeAvion.Cargo;
 		}
 		public CCargo(string Nom, int Vitesse, int Entretient, int Capacite, int Embarquement, int Debarquement, int qteCargo) : base(Nom, Vitesse, Entretient, Capacite, Embarquement,Debarquement)
 		{
+			m_etat = new CInactif();
 			this.qteCargo = qteCargo;
+			type = typeAvion.Cargo;
 		}
 
 		public int QteCargo

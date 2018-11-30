@@ -78,10 +78,27 @@ namespace Simulateur
             get { return Clients.Count(); }
         }
 
+		[XmlIgnore]
+		public List<CAeronef> Listaeronefs
+		{
+			get { return Aeronefs; }
+		}
+
+		public CAeronef[] aeronefs
+		{
+			get { return Aeronefs.ToArray(); }
+			set {Aeronefs = value.ToList();}
+		}
+		
 		public CAeronef this[int i]
 		{
 			get { return Aeronefs.ElementAt(i); }
-			set { Aeronefs[i] = value; }
+			set {
+				if (!Aeronefs.Exists(aero => aero == value))
+					Aeronefs.Add(value);
+				else
+					Aeronefs[i] = value;
+			}
 		}
 
 		public Position position {
@@ -135,24 +152,28 @@ namespace Simulateur
 				{
 					case typeClient.Voyageur:
 						aeronef=ChoisirAeronef(client as CVoyageur);
-						aeronef.changerEtat(new CEmbarquement(TimerDebut, (aeronef as CTransport).embarquement, (client as CVoyageur).clients),TimerDebut);
+						if (aeronef != null)
+							aeronef.changerEtat(new CEmbarquement(TimerDebut, (aeronef as CTransport).embarquement, (client as CVoyageur).clients),TimerDebut);
 						break;
 					case typeClient.Cargaison:
 						aeronef=ChoisirAeronef(client as CCargaison);
-						aeronef.changerEtat(new CEmbarquement(TimerDebut,(aeronef as CTransport).embarquement,(int)(client as CCargaison).poid),TimerDebut);
+						if (aeronef != null)
+							aeronef.changerEtat(new CEmbarquement(TimerDebut,(aeronef as CTransport).embarquement,(int)(client as CCargaison).poid),TimerDebut);
 						break;
 					case typeClient.Incendie:
 					case typeClient.Detresse:
 					case typeClient.Point:
 						aeronef=ChoisirAeronef(client.TypeClient);
-						aeronef.changerEtat(new CVol(EtatAeronef.Inactif, position, (client as CSurCarte).position),TimerDebut);
+						if (aeronef != null)
+							aeronef.changerEtat(new CVol(EtatAeronef.Inactif, position, (client as CSurCarte).position),TimerDebut);
 						break;
 				}
 			}
 		}
 		private CAeronef ChoisirAeronef(CVoyageur client) {
+
 			List<CAeronef> aPassager =
-				Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.GetType()== typeof(CPassager)));
+				Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.Type== typeAvion.Passager));
 
 			if (aPassager.Count <= 0) return null;
 
@@ -166,7 +187,7 @@ namespace Simulateur
 		private CAeronef ChoisirAeronef(CCargaison client)
 		{
 			List<CAeronef> aCargo =
-			Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.GetType() == typeof(CCargo)));
+			Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.Type == typeAvion.Cargo));
 
 			if (aCargo.Count <= 0) return null;
 
@@ -179,23 +200,23 @@ namespace Simulateur
 
 		private CAeronef ChoisirAeronef(typeClient clientType)
 		{
-			Type aeronefType=null;
+			typeAvion aeronefType;
 			switch (clientType)
 			{
 				case typeClient.Incendie:
-					aeronefType = typeof(CCiterne);
+					aeronefType = typeAvion.Citerne;
 					break;
 				case typeClient.Detresse:
-					aeronefType = typeof(CSecours);
+					aeronefType = typeAvion.Secours;
 					break;
 				case typeClient.Point:
-					aeronefType = typeof(CLoisir);
+					aeronefType = typeAvion.Loisir;
 					break;
 				default:
 					return null;
 			}
 			List<CAeronef> vehicules =
-				Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.GetType() == aeronefType));
+				Aeronefs.FindAll(vehicule => (vehicule.etat.Status == EtatAeronef.Inactif && vehicule.Type == aeronefType));
 			if (vehicules.Count() <= 0) return null;
 			return vehicules.ElementAt(vehicules.Count - 1);
 		}

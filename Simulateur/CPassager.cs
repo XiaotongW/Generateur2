@@ -13,11 +13,14 @@ namespace Simulateur
 
 		public CPassager()
 		{
-
+			type = typeAvion.Passager;
+			m_etat = new CInactif();
 		}
 		public CPassager(string Nom, int Vitesse, int Entretient, int Capacite, int Embarquement, int Debarquement,int nbPassager) : base(Nom, Vitesse, Entretient, Capacite, Embarquement, Debarquement)
 		{
 			this.nbPassager = nbPassager;
+			m_etat = new CInactif();
+			type = typeAvion.Passager;
 		}
 		public int Passager
 		{

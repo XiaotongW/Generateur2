@@ -11,11 +11,13 @@ namespace Simulateur
 	{
 		public CCiterne()
 		{
-
+			m_etat = new CInactif();
+			type = typeAvion.Citerne;
 		}
 		public CCiterne(string Nom, int Vitesse, int Entretient, int Capacite) : base(Nom, Vitesse, Entretient, Capacite)
 		{
-
+			m_etat = new CInactif();
+			type = typeAvion.Citerne;
 		}
 		public override string ToString()
 		{

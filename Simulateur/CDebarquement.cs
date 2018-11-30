@@ -23,7 +23,7 @@ namespace Simulateur
 
 		public override Etat ChangerEtat(CAeronef aeronef)
 		{
-			return Fini ? new CMaintenance(aeronef.DebutEtat,aeronef.entretient):base.ChangerEtat(aeronef);
+			return Fini ? new CMaintenance(aeronef.DebutEtat,aeronef.entretient):base.ChangerEtat();
 		}
 
 	}

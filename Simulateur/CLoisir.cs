@@ -11,11 +11,13 @@ namespace Simulateur
 	{
 		public CLoisir()
 		{
-
+			m_etat = new CInactif();
+			type = typeAvion.Loisir;
 		}
 		public CLoisir(string Nom, int Vitesse, int Entretient, int Capacite):base(Nom, Vitesse,Entretient,Capacite)
 		{
-
+			m_etat = new CInactif();
+			type = typeAvion.Loisir;
 		}
 		public override string ToString()
 		{

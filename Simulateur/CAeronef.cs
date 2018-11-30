@@ -7,6 +7,13 @@ using System.Xml.Serialization;
 
 namespace Simulateur
 {
+	public enum typeAvion { Passager, Cargo, Loisir, Secours, Citerne };
+	[XmlInclude(typeof(CLoisir))]
+	[XmlInclude(typeof(CCiterne))]
+	[XmlInclude(typeof(CSecours))]
+	[XmlInclude(typeof(CPassager))]
+	[XmlInclude(typeof(CCargo))]
+	[XmlInclude(typeof(CTransport))]
 	public abstract class CAeronef
 	{
 		protected string Nom;
@@ -15,10 +22,10 @@ namespace Simulateur
 		protected int Capacite;
 		protected Etat m_etat;
 		protected int DernierChangementEtat;
-
+		protected typeAvion type;
 		public CAeronef()
 		{
-			
+			m_etat = new CInactif();
 		}
 
 		public CAeronef(string Nom, int Vitesse, int Entretient, int Capacite)
@@ -31,10 +38,16 @@ namespace Simulateur
 			DernierChangementEtat = 0;
 		}
 
+		[XmlIgnore]
+		public typeAvion Type
+		{
+			get { return type; }
+		}
+
 		public string nom
 		{
 			get { return Nom; }
-			private set { Nom = value; }
+			set { Nom = value; }
 		}
 		public int vitesse
 		{
@@ -51,11 +64,12 @@ namespace Simulateur
 			get { return Capacite; }
 			set { Capacite = value; }
 		}
+		[XmlIgnore]
 		public Etat etat
 		{
 			get { return m_etat; }
 		}
-
+		[XmlIgnore]
 		public int DebutEtat
 		{
 			get { return DernierChangementEtat; }
@@ -67,10 +81,17 @@ namespace Simulateur
 			m_etat = (m_etat.Status == EtatAeronef.Inactif) ? p_etat : m_etat;
 			return m_etat.Status;
 		}
+
 		public EtatAeronef changerEtat(int TimerSecs)
 		{
 			DernierChangementEtat = TimerSecs;
 			m_etat = m_etat.ChangerEtat(this);
+			return m_etat.Status;
+		}
+		public EtatAeronef changerEtat(int TimerSecs, Position posDepart, Position posArriver)
+		{
+			DernierChangementEtat = TimerSecs;
+			m_etat = (m_etat.Status==EtatAeronef.Embarquement)?m_etat.ChangerEtat(this,posDepart,posArriver):m_etat.ChangerEtat(this);
 			return m_etat.Status;
 		}
 	}

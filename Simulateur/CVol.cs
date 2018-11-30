@@ -58,9 +58,14 @@ namespace Simulateur
 
 			}
 			if (m_prevEtat == EtatAeronef.Embarquement)
-				return Fini ? new CDebarquement(aeronef.DebutEtat,(aeronef as CTransport).debarquement,aeronef.capacite) : base.ChangerEtat(aeronef);
+				return Fini ? new CDebarquement(aeronef.DebutEtat,(aeronef as CTransport).debarquement,aeronef.capacite) : base.ChangerEtat();
 
-			return Fini ? new CMaintenance(aeronef.DebutEtat,aeronef.entretient): base.ChangerEtat(aeronef);
+			return Fini ? new CMaintenance(aeronef.DebutEtat,aeronef.entretient): base.ChangerEtat();
+		}
+
+		public override Etat ChangerEtat(CAeronef aeronef)
+		{
+			return base.ChangerEtat();
 		}
 	}
 }

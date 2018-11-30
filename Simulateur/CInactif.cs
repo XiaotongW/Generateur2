@@ -13,5 +13,10 @@ namespace Simulateur
 		{
 			
 		}
+
+		public override Etat ChangerEtat(CAeronef aeronef)
+		{
+			return base.ChangerEtat();
+		}
 	}
 }

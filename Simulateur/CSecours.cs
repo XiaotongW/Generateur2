@@ -11,11 +11,11 @@ namespace Simulateur
 	{
 		public CSecours()
 		{
-
+			type = typeAvion.Secours;
 		}
 		public CSecours(string Nom, int Vitesse, int Entretient, int Capacite) : base(Nom, Vitesse, Entretient, Capacite)
 		{
-			
+			type = typeAvion.Secours;
 		}
 		public override string ToString()
 		{

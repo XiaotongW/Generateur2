@@ -25,10 +25,8 @@ namespace Simulateur
 		{
 			return this;
 		}
-		public virtual Etat ChangerEtat(CAeronef aeronef) {
-			return aeronef.etat;
-		}
-		public virtual Etat ChangerEtat(Position depart,Position arriver)
+		public abstract Etat ChangerEtat(CAeronef aeronef);
+		public virtual Etat ChangerEtat(CAeronef aeronef, Position depart,Position arriver)
 		{
 			return this;
 		} 

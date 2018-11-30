@@ -32,7 +32,7 @@ namespace Simulateur
             if(TimeSecs-TimeLastUpdate >= 3600 || TimeLastUpdate==0)
             {
                 CreerClient();
-				TimeLastUpdate = TimeSecs+1;
+				TimeLastUpdate = (TimeSecs==0)?1:TimeSecs;
             } 
         }
 
@@ -113,7 +113,7 @@ namespace Simulateur
             Position mapPosition = new Position(x, y);
 
             UsineClient usineClient = new UsineClient();
-            TrouverAeroportProche(mapPosition).AjouterClient(usineClient.creeClient(mapPosition));
+            TrouverAeroportProche(mapPosition,trouverAvionPourClient(typeClient.Detresse)).AjouterClient(usineClient.creeClient(mapPosition));
         }
 
         //Creer un incendit ou un point d'intérêt
@@ -128,14 +128,33 @@ namespace Simulateur
             Position mapPosition = new Position(x,y);
 
             UsineClient usineClient = new UsineClient();
-            TrouverAeroportProche(mapPosition).AjouterClient(usineClient.creeClient(type,mapPosition,value));
+            TrouverAeroportProche(mapPosition,trouverAvionPourClient(type)).AjouterClient(usineClient.creeClient(type,mapPosition,value));
         }
 
+		private typeAvion trouverAvionPourClient(typeClient client)
+		{
+			switch (client)
+			{
+				case typeClient.Voyageur:
+					return typeAvion.Passager;
+				case typeClient.Cargaison:
+					return typeAvion.Cargo;
+				case typeClient.Point:
+					return typeAvion.Loisir;
+				case typeClient.Incendie:
+					return typeAvion.Citerne;
+				case typeClient.Detresse:
+					return typeAvion.Secours;
+			}
+			return typeAvion.Passager;
+		}
+
         //trouve l'aeroport la plus proche d'une position
-        private CAeroport TrouverAeroportProche(Position mapPosition)
+        private CAeroport TrouverAeroportProche(Position mapPosition,typeAvion avionType)
         {
+			List<CAeroport> cAeroports = ListeAeroports.FindAll(aeroports => aeroports.nbAeronef > 0);
             CAeroport aeroport = null;//Aeroport actuellement le plus près
-            foreach (CAeroport Aero in this.ListeAeroports)
+            foreach (CAeroport Aero in cAeroports)
             {
                 if (aeroport == null)
                 {
@@ -143,7 +162,8 @@ namespace Simulateur
                 }
                 else if (CalculerDistance(aeroport.position,mapPosition) > CalculerDistance(Aero.position,mapPosition))
                 {
-                    aeroport = Aero;
+					if (Aero.Listaeronefs.Exists(aeronef => aeronef.Type == avionType))
+						aeroport = Aero;
                 }
             }
             return aeroport;
@@ -158,7 +178,6 @@ namespace Simulateur
             return Distance;
         }
         
-
         //Creer un lot de voyageur pour un aeroport
         private CClients CreerVoyageur(int min,int max,CAeroport SelfAero)
         {
@@ -186,7 +205,7 @@ namespace Simulateur
 				aeroport.assignerClients(TimeSecs);
 			}
 			EnvoyerAeronefVol();
-			RetirerAeronefVol(TimeSecs);
+			//RetirerAeronefVol(TimeSecs);
 		}
 
 		private void EnvoyerAeronefVol()

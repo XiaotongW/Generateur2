@@ -15,7 +15,7 @@ namespace Simulateur
 
 		public override Etat ChangerEtat(CAeronef aeronef)
 		{
-			return Fini? new CVol(EtatAeronef.Largage, m_posArriver, m_posDepart):base.ChangerEtat(aeronef);
+			return Fini? new CVol(EtatAeronef.Largage, m_posArriver, m_posDepart):base.ChangerEtat();
 		}
 	}
 }
