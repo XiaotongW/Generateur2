@@ -30,7 +30,7 @@ namespace Simulateur
 		Scenario m_scenario;
 		Update updateDelegue;
 		Thread formRun;
-
+		Thread UpdateAeronef;
 		public CSimulateur()
 		{
 			updateDelegue = new Update(Update);
@@ -56,16 +56,22 @@ namespace Simulateur
 				Timer.ResetTimer().Start();
 			}
 		}
-
+		private void UpdateCLientAeronef()
+		{
+			m_scenario.UpdateClient(Timer.SecondesEcouler());
+			m_scenario.UpdateEtat(Timer.SecondesEcouler());
+		}
 		private void Update()
 		{
 			// Méthode delegue pour Update l'horloge de la fchSimulateur
 			try
 			{
 				VSimulateur.Invoke(VSimulateur.timeDelegue, new object[] {Timer.ToString()});
-				m_scenario.UpdateEtat(Timer.SecondesEcouler());
-				m_scenario.UpdateClient(Timer.SecondesEcouler());
-                //VSimulateur.Invoke(VSimulateur.dessinerCarte);
+				if (UpdateAeronef == null || UpdateAeronef.ThreadState != ThreadState.Running)
+				{
+					UpdateAeronef = new Thread(() => UpdateCLientAeronef());
+					UpdateAeronef.Start();
+				}	
 			}
 			catch
 			{

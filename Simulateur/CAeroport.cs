@@ -109,6 +109,7 @@ namespace Simulateur
 		public void AjouterClient(CClients Client)
         {
             Clients.Add(Client);
+			
         }
         public void RetierClient(CClients Client)
         {

@@ -29,10 +29,10 @@ namespace Simulateur
         private void UpdateClients(int TimeSecs)
         {
 
-            if(TimeSecs-TimeLastUpdate >= 3600)
+            if(TimeSecs-TimeLastUpdate >= 3600 || TimeLastUpdate==0)
             {
                 CreerClient();
-				TimeLastUpdate = TimeSecs;
+				TimeLastUpdate = TimeSecs+1;
             } 
         }
 
@@ -181,6 +181,10 @@ namespace Simulateur
 
 		private void UpdateAeronef(int TimeSecs)
 		{
+			foreach (CAeroport aeroport in ListeAeroports)
+			{
+				aeroport.assignerClients(TimeSecs);
+			}
 			EnvoyerAeronefVol();
 			RetirerAeronefVol(TimeSecs);
 		}
