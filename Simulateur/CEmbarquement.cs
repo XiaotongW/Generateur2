@@ -10,10 +10,14 @@ namespace Simulateur
 	{
 		protected bool EmbarquementFini;
 		int FinEmbarquement;
-		public CEmbarquement(int timerDebut, int tempsEmbarquement, int nbrEmbarquer) : base(EtatAeronef.Embarquement)
+		Position depart;
+		Position arriver;
+		public CEmbarquement(int timerDebut, int tempsEmbarquement, int nbrEmbarquer,Position depart,Position arriver) : base(EtatAeronef.Embarquement)
 		{
 			EmbarquementFini = tempsEmbarquement <= 0;
 			FinEmbarquement = (timerDebut + tempsEmbarquement * nbrEmbarquer <= timerDebut) ? 0 : timerDebut + tempsEmbarquement * nbrEmbarquer;
+			this.depart = depart;
+			this.arriver = arriver;
 		}
 
 		public bool Fini
@@ -22,15 +26,9 @@ namespace Simulateur
 			private set { EmbarquementFini = value; }
 		}
 
-		public override Etat ChangerEtat(CAeronef aeronef,Position depart,Position arriver)
-		{
-			 
-			return Fini ? new CVol(EtatAeronef.Embarquement,depart, arriver): base.ChangerEtat();
-		}
-
 		public override Etat ChangerEtat(CAeronef aeronef)
 		{
-			return base.ChangerEtat();
+			return Fini ? new CVol(EtatAeronef.Embarquement,depart, arriver): base.ChangerEtat();
 		}
 	}
 }

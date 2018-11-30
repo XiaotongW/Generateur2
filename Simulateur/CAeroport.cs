@@ -153,12 +153,12 @@ namespace Simulateur
 					case typeClient.Voyageur:
 						aeronef=ChoisirAeronef(client as CVoyageur);
 						if (aeronef != null)
-							aeronef.changerEtat(new CEmbarquement(TimerDebut, (aeronef as CTransport).embarquement, (client as CVoyageur).clients),TimerDebut);
+							aeronef.changerEtat(new CEmbarquement(TimerDebut, (aeronef as CTransport).embarquement, (client as CVoyageur).clients, (client as CVoyageur).destination,position), TimerDebut);
 						break;
 					case typeClient.Cargaison:
 						aeronef=ChoisirAeronef(client as CCargaison);
 						if (aeronef != null)
-							aeronef.changerEtat(new CEmbarquement(TimerDebut,(aeronef as CTransport).embarquement,(int)(client as CCargaison).poid),TimerDebut);
+							aeronef.changerEtat(new CEmbarquement(TimerDebut,(aeronef as CTransport).embarquement,(int)(client as CCargaison).poid,(client as CCargaison).destination,position),TimerDebut);
 						break;
 					case typeClient.Incendie:
 					case typeClient.Detresse:

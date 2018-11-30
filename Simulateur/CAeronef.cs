@@ -75,10 +75,16 @@ namespace Simulateur
 			get { return DernierChangementEtat; }
 		}
 
+		public EtatAeronef changerEtat()
+		{
+			etat.ChangerEtat(this);
+			return etat.Status;
+		}
+
 		public EtatAeronef changerEtat(Etat p_etat, int TimerSecs)
 		{
-			DernierChangementEtat = TimerSecs;
 			m_etat = (m_etat.Status == EtatAeronef.Inactif) ? p_etat : m_etat;
+			DernierChangementEtat = m_etat == p_etat? TimerSecs:DernierChangementEtat;
 			return m_etat.Status;
 		}
 

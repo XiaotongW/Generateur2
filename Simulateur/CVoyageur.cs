@@ -12,6 +12,7 @@ namespace Simulateur
 		public CVoyageur(typeClient client, CAeroport aeroport, int nombreClient):base(client, aeroport)
 		{
 			this.nombreClient = nombreClient;
+			Destination = aeroport;
 		}
 
 		public int clients

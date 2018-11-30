@@ -205,16 +205,17 @@ namespace Simulateur
 				aeroport.assignerClients(TimeSecs);
 			}
 			EnvoyerAeronefVol();
-			//RetirerAeronefVol(TimeSecs);
+			RetirerAeronefVol(TimeSecs);
 		}
 
 		private void EnvoyerAeronefVol()
 		{
+	
 			foreach (CAeroport aeroport in ListeAeroports)
 			{
 				for (int i = 0; i < aeroport.nbAeronef; i++)
 				{
-					if (aeroport[i].etat.Status == EtatAeronef.Vol)
+					if (aeroport[i].changerEtat()== EtatAeronef.Vol)
 					{
 						ListeAeronefVol.Add(aeroport[i]);
 						aeroport.RetierAeronef(aeroport[i]);

@@ -8,7 +8,7 @@ namespace Simulateur
 {
 	abstract class CDansAeroport:CClients
 	{
-		private CAeroport Destination;
+		protected CAeroport Destination;
 
 
 		public CDansAeroport(typeClient client, CAeroport Destination):base(client)

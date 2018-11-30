@@ -13,6 +13,7 @@ namespace Simulateur
 		public CCargaison (typeClient client,CAeroport aeroport, double poid):base(client,aeroport)
 		{
 			m_poid = poid;
+			Destination = aeroport;
 		}
 
 		public double poid
