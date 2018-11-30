@@ -29,18 +29,20 @@ namespace Simulateur
 		}
 
         public void rafraichirCarte()
+        //Rafraichir le cadre d’image de la carte pour afficher les changements
         {
             pictureBox1.Refresh();
         }
 
 		private void setHorloge(string Time)
+        //Mettre à jour l’affichage de l’horloge
 		{
 			// Methode delegue pour mettre a jour l'affichage du temps
 			lblHorloge.Text = Time;
 		}
 
         private void chargerScenario()
-        //Afficher le dialogue d'ouverture de ficher pour permettre de charger un scénario dans le simulateur
+        //Ouvrir le fichier de scénario depuis le disque
         {
             /*OpenFileDialog ouvrirFichier;
             ouvrirFichier = new OpenFileDialog();
@@ -87,6 +89,7 @@ namespace Simulateur
         }
 
         private void afficherListeAeronef()
+        //Charger dans la liste les aeronefs de l'aéroport choisi
         {
             int codeAeroport;
             int nbAeronef;
@@ -106,6 +109,7 @@ namespace Simulateur
         }
 
         private void afficherListeClient()
+        //Charger dans la liste les client de l'aéroport choisi
         {
             int codeAeroport;
             int nbClient;
@@ -125,6 +129,7 @@ namespace Simulateur
         }
 
         private void afficherAeroportCarte(PaintEventArgs e)
+        //Afficher les aéroports sur la carte du monde
         {
             int nbAeroport;
             int posX;
@@ -149,6 +154,7 @@ namespace Simulateur
         }
 
         private void afficherAeronef(PaintEventArgs e)
+        //Afficher les aéronefs en vol sur la carte du monde
         {
             int posX;
             int posY;
@@ -173,6 +179,7 @@ namespace Simulateur
         }
 
         private void afficherLiaison(PaintEventArgs e)
+        //Afficher les liaisons entre deux aéroport effectué par les avions
         {
             Pen ligne;
             Color noir;
